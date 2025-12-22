@@ -1,6 +1,6 @@
 <resources>
     <string name="amount">AMOUNT</string>
-    <string name="app_name">Terminal</string>
+    <string name="app_name">Jeturing Pay</string>
     <string name="cancel">Cancel</string>
     <string name="check_for_update">Check for update</string>
     <string name="checking_for_update">Checking for update</string>
@@ -78,7 +78,6 @@
     <string name="payment_method">PAYMENT METHOD OPTIONS</string>
     <string name="request_extended_auth">Request extended auth</string>
     <string name="request_incremental_auth">Request incremental auth</string>
-
     <string name="a11y_terminal_offline">Terminal is offline</string>
     <string name="a11y_terminal_online">Terminal is online</string>
     <string name="a11y_terminal_unknown">Terminal connection status is unknown</string>
@@ -88,9 +87,23 @@
     <string name="offline_behavior_prefer_online">Prefer Online</string>
     <string name="offline_behavior_require_online">Require Online</string>
     <string name="offline_behavior_force_offline">Force Offline</string>
-
     <string name="view_offline_logs">View stored offline payment logs</string>
     <string name="offline_logs">Offline Logs</string>
+    <!-- Jeturing Pay Specific Strings copilot/add-mobile-app-jeturing-pay-->
+    <string name="jeturing_pay">Jeturing Pay</string>
+    <string name="registration">Registration</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone Number</string>
+    <string name="business_name">Business Name</string>
+    <string name="already_registered">Already registered? Login</string>
+    <string name="not_registered">Not registered? Sign up</string>
+    <string name="quick_payment">Quick Payment</string>
+    <string name="preset_amounts">Preset Amounts</string>
+    <string name="custom_amount">Custom Amount</string>
+    <string name="simple_checkout">Simple Checkout</string>
     <string name="close">Close</string>
     <string name="terminal_payments_help_text">💳 Terminal Payments and Saved Cards.\nPress and hold an item to cancel, refund, or refresh to get the latest state.</string>
     <string name="transaction_ledger">Transaction Ledger</string>

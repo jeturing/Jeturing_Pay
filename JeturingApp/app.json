@@ -1,0 +1,65 @@
+{
+  "expo": {
+    "name": "Jeturing Pay",
+    "slug": "jeturing-pay",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jeturing.pay",
+      "infoPlist": {
+        "NFCReaderUsageDescription": "Jeturing Pay necesita acceso NFC para procesar pagos con Tap to Pay",
+        "NSLocationWhenInUseUsageDescription": "Necesitamos tu ubicación para procesar pagos seguros",
+        "NSCameraUsageDescription": "Para escanear códigos QR de pago"
+      },
+      "entitlements": {
+        "com.apple.developer.nfc.readersession.formats": ["NDEF", "TAG"],
+        "com.apple.developer.contactless-payment": true
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.jeturing.pay",
+      "permissions": [
+        "android.permission.NFC",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.CAMERA"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "@stripe/stripe-react-native",
+        {
+          "merchantIdentifier": "merchant.com.jeturing.pay",
+          "enableGooglePay": true,
+          "enableApplePay": true
+        }
+      ],
+      "expo-build-properties"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "jeturing-pay-expo"
+      },
+      "stripePublishableKey": "pk_live_jeturing",
+      "apiUrl": "https://api.jeturing.com"
+    }
+  }
+}

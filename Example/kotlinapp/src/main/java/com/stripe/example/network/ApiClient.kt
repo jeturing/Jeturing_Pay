@@ -1,6 +1,7 @@
 package com.stripe.example.network
 
 import com.stripe.example.BuildConfig
+import com.stripe.example.model.RegistrationResponse
 import com.stripe.stripeterminal.external.models.ConnectionTokenException
 import okhttp3.OkHttpClient
 import retrofit2.Callback
@@ -22,10 +23,13 @@ object ApiClient {
         .build()
     private val service: BackendService = retrofit.create(BackendService::class.java)
 
+    // Store the current connected account ID
+    var connectedAccountId: String? = null
+
     @Throws(ConnectionTokenException::class)
     internal fun createConnectionToken(): String {
         try {
-            val result = service.getConnectionToken().execute()
+            val result = service.getConnectionToken(connectedAccountId).execute()
             if (result.isSuccessful && result.body() != null) {
                 return result.body()!!.secret
             } else {
@@ -33,6 +37,28 @@ object ApiClient {
             }
         } catch (e: IOException) {
             throw ConnectionTokenException("Creating connection token failed", e)
+        }
+    }
+
+    @Throws(Exception::class)
+    internal fun registerUser(
+        fullName: String,
+        email: String,
+        phone: String,
+        businessName: String
+    ): RegistrationResponse {
+        try {
+            val result = service.registerUser(fullName, email, phone, businessName).execute()
+            if (result.isSuccessful && result.body() != null) {
+                val response = result.body()!!
+                // Store the connected account ID for future API calls
+                connectedAccountId = response.stripeAccountId
+                return response
+            } else {
+                throw Exception("User registration failed")
+            }
+        } catch (e: IOException) {
+            throw Exception("User registration failed", e)
         }
     }
 
@@ -54,7 +80,8 @@ object ApiClient {
                 city,
                 postalCode,
                 state,
-                country
+                country,
+                connectedAccountId
             ).execute()
             if (result.isSuccessful.not()) {
                 throw Exception("Creating location failed")
@@ -65,13 +92,13 @@ object ApiClient {
     }
 
     internal fun capturePaymentIntent(id: String) {
-        service.capturePaymentIntent(id).execute()
+        service.capturePaymentIntent(id, connectedAccountId).execute()
     }
 
     internal fun cancelPaymentIntent(
         id: String,
         callback: Callback<Void>
     ) {
-        service.cancelPaymentIntent(id).enqueue(callback)
+        service.cancelPaymentIntent(id, connectedAccountId).enqueue(callback)
     }
 }

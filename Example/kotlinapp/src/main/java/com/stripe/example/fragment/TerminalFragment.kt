@@ -98,6 +98,11 @@ class TerminalFragment : Fragment(R.layout.fragment_terminal) {
                 viewModel.discoveryMethod,
             )
         }
+
+        // Link up the registration button
+        viewBinding.registerNewUserButton.setOnClickListener {
+            (activity as? NavigationListener)?.onRequestRegistration()
+        }
     }
 
     override fun onPause() {

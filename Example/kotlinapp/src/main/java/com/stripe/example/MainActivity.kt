@@ -10,6 +10,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.stripe.example.fragment.ConnectedReaderFragment
 import com.stripe.example.fragment.PaymentFragment
+import com.stripe.example.fragment.RegistrationFragment
+import com.stripe.example.fragment.SimplePaymentFragment
 import com.stripe.example.fragment.TerminalFragment
 import com.stripe.example.fragment.UpdateReaderFragment
 import com.stripe.example.fragment.admin.LedgerFragment
@@ -293,6 +295,20 @@ class MainActivity :
     override fun onLocationCleared() {
         supportFragmentManager.popBackStackImmediate()
         (supportFragmentManager.fragments.last() as? LocationSelectionController)?.onLocationCleared()
+    }
+
+    /**
+     * Callback function called when registration is requested
+     */
+    override fun onRequestRegistration() {
+        navigateTo(RegistrationFragment.TAG, RegistrationFragment())
+    }
+
+    /**
+     * Callback function called when simple payment workflow is selected
+     */
+    override fun onSelectSimplePaymentWorkflow() {
+        navigateTo(SimplePaymentFragment.TAG, SimplePaymentFragment())
     }
 
     override fun onReaderReconnectStarted(reader: Reader, cancelReconnect: Cancelable, reason: DisconnectReason) {
