@@ -188,27 +188,17 @@ sendInvoiceToCustomer(
 
 ## 🌐 Backend Endpoints Requeridos
 
-### 1. Lookup Customer
-```http
-GET /api/customers/lookup?phone={phone}
-Headers: Stripe-Account: {accountId}
+### Usando Jeturing API v2.5.0
 
-Response:
-{
-  "exists": true,
-  "customer": {
-    "id": "cus_xxx",
-    "email": "cliente@example.com",
-    "phone": "+1234567890",
-    "name": "Juan Pérez"
-  }
-}
-```
+**Base URL**: `https://api.jeturing.com`
 
-### 2. Create Customer
+**Authentication**: `X-API-Key` header required
+
+### 1. Create Customer (✅ Available)
 ```http
-POST /api/customers/{accountId}
-Headers: Stripe-Account: {accountId}
+POST /connected_customers/
+Query Params: connected_account_id={accountId}
+Headers: X-API-Key: {api_key}
 Body:
 {
   "email": "nuevo@example.com",
@@ -227,14 +217,53 @@ Response:
   "email": "nuevo@example.com",
   "phone": "+1234567890",
   "name": "María López",
+  "metadata": {...},
+  "created": 1234567890,
+  "livemode": false
+}
+```
+
+### 2. Get Customer (✅ Available)
+```http
+GET /connected_customers/{customer_id}
+Query Params: connected_account_id={accountId}
+Headers: X-API-Key: {api_key}
+
+Response:
+{
+  "id": "cus_xxx",
+  "email": "cliente@example.com",
+  "phone": "+1234567890",
+  "name": "Juan Pérez",
   "metadata": {...}
 }
 ```
 
-### 3. Generate Invoice
+### 3. Update Customer (✅ Available)
 ```http
-POST /api/invoices/{accountId}
-Headers: Stripe-Account: {accountId}
+PUT /connected_customers/{customer_id}
+Query Params: connected_account_id={accountId}
+Headers: X-API-Key: {api_key}
+Body:
+{
+  "email": "updated@example.com",
+  "phone": "+0987654321",
+  "metadata": {...}
+}
+```
+
+### 4. Lookup Customer (⚠️ Not Available - Workaround Needed)
+```http
+# Current: No direct phone lookup endpoint
+# Workaround: Store customer_id → phone mapping locally
+# OR: Request Jeturing team to add search endpoint
+```
+
+### 5. Generate Invoice (⏳ Pending Confirmation)
+```http
+POST /invoices
+Query Params: connected_account_id={accountId}
+Headers: X-API-Key: {api_key}
 Body:
 {
   "payment_intent": "pi_xxx",
@@ -242,130 +271,68 @@ Body:
   "auto_send_email": true
 }
 
-Response:
-{
-  "id": "in_xxx",
-  "pdf_url": "https://invoice.stripe.com/...",
-  "customer_email": "cliente@example.com",
-  "amount": 1000,
-  "status": "paid"
+# TODO: Confirm endpoint path and structure with Jeturing team
+```
+
+## 🔐 Implementation Notes
+
+### Using Jeturing API
+
+The app now uses the actual Jeturing API (v2.5.0) instead of hypothetical endpoints.
+
+**Key Changes:**
+1. ✅ Customer creation via `POST /connected_customers/`
+2. ✅ Customer retrieval via `GET /connected_customers/{customer_id}`
+3. ✅ Customer update via `PUT /connected_customers/{customer_id}`
+4. ✅ Uses `connected_account_id` as query parameter
+5. ✅ Uses `X-API-Key` header for authentication
+6. ⚠️ Phone lookup requires workaround (no direct endpoint)
+7. ⏳ Invoice generation endpoint pending confirmation
+
+### API Key Configuration
+
+The app requires configuration of the Jeturing API key:
+
+```typescript
+import { setApiKey } from './services/customer';
+
+// During app initialization or onboarding
+await setApiKey('your_jeturing_api_key_here');
+```
+
+### Customer Lookup Workaround
+
+Since Jeturing API doesn't have a direct phone lookup endpoint, implement one of these strategies:
+
+**Option 1: Local Storage Mapping**
+```typescript
+// Store customer_id when creating customer
+await AsyncStorage.setItem(
+  `customer_phone_${phone}`,
+  customer.id
+);
+
+// Retrieve when looking up
+const customerId = await AsyncStorage.getItem(
+  `customer_phone_${phone}`
+);
+if (customerId) {
+  const customer = await getCustomerById(customerId, accountId);
 }
 ```
 
-## 🔐 Implementación Backend (Node.js)
-
-### Lookup Customer
-```javascript
-app.get('/api/customers/lookup', async (req, res) => {
-  const { phone } = req.query;
-  const accountId = req.headers['stripe-account'];
-
-  try {
-    const customers = await stripe.customers.list({
-      limit: 1,
-      email: phone // or use metadata search
-    }, {
-      stripeAccount: accountId
-    });
-
-    if (customers.data.length > 0) {
-      res.json({
-        exists: true,
-        customer: customers.data[0]
-      });
-    } else {
-      res.json({ exists: false });
-    }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+**Option 2: Request New Endpoint**
+Ask Jeturing team to add:
+```http
+GET /connected_customers/search
+Query Params: 
+  - connected_account_id={accountId}
+  - phone={phone}
+Headers: X-API-Key: {api_key}
 ```
 
-### Create Customer
-```javascript
-app.post('/api/customers/:accountId', async (req, res) => {
-  const { accountId } = req.params;
-  const { email, phone, name, metadata } = req.body;
-
-  try {
-    const customer = await stripe.customers.create({
-      email,
-      phone,
-      name,
-      metadata
-    }, {
-      stripeAccount: accountId
-    });
-
-    res.json(customer);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-});
-```
-
-### Generate Invoice
-```javascript
-app.post('/api/invoices/:accountId', async (req, res) => {
-  const { accountId } = req.params;
-  const { payment_intent, customer, auto_send_email } = req.body;
-
-  try {
-    // Get payment intent details
-    const intent = await stripe.paymentIntents.retrieve(payment_intent, {
-      stripeAccount: accountId
-    });
-
-    // Create invoice
-    const invoice = await stripe.invoices.create({
-      customer,
-      auto_advance: true,
-      collection_method: 'charge_automatically',
-      metadata: {
-        payment_intent,
-        amount: intent.amount
-      }
-    }, {
-      stripeAccount: accountId
-    });
-
-    // Add invoice item
-    await stripe.invoiceItems.create({
-      customer,
-      invoice: invoice.id,
-      amount: intent.amount,
-      currency: intent.currency,
-      description: 'Pago Jeturing Pay'
-    }, {
-      stripeAccount: accountId
-    });
-
-    // Finalize and send
-    const finalizedInvoice = await stripe.invoices.finalizeInvoice(
-      invoice.id,
-      { auto_advance: true },
-      { stripeAccount: accountId }
-    );
-
-    if (auto_send_email) {
-      await stripe.invoices.sendInvoice(invoice.id, {
-        stripeAccount: accountId
-      });
-    }
-
-    res.json({
-      id: finalizedInvoice.id,
-      pdf_url: finalizedInvoice.invoice_pdf,
-      customer_email: finalizedInvoice.customer_email,
-      amount: finalizedInvoice.amount_paid,
-      status: finalizedInvoice.status
-    });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-});
-```
+**Option 3: Use Metadata Search**
+Store phone in metadata and implement server-side search.
 
 ## 📊 Diagrama de Secuencia
 
@@ -373,7 +340,7 @@ app.post('/api/invoices/:accountId', async (req, res) => {
 sequenceDiagram
     participant M as Merchant App
     participant C as Cliente
-    participant B as Backend Hub
+    participant J as Jeturing API
     participant S as Stripe
 
     M->>M: Pago exitoso
@@ -385,24 +352,27 @@ sequenceDiagram
         C->>C: Escanea QR
         C->>M: Abre CustomerRegistrationScreen
         C->>M: Ingresa datos (nombre, email, teléfono)
-        M->>B: POST /api/customers/{accountId}
-        B->>S: stripe.customers.create()
-        S->>B: Customer creado
-        B->>M: Customer data
-        M->>B: POST /api/invoices/{accountId}
-        B->>S: stripe.invoices.create()
+        M->>J: POST /connected_customers/?connected_account_id=xxx
+        Note over M,J: Headers: X-API-Key
+        J->>S: stripe.customers.create(on connected account)
+        S->>J: Customer creado
+        J->>M: ConnectedCustomerResponse
+        M->>J: POST /invoices?connected_account_id=xxx
+        Note over M,J: TODO: Confirm endpoint
+        J->>S: stripe.invoices.create()
         S->>S: Envía email automático
         S->>C: Email con factura
         M->>M: Muestra confirmación
     else Cliente Existente
         M->>M: Muestra input teléfono
         C->>M: Ingresa teléfono
-        M->>B: GET /api/customers/lookup?phone=xxx
-        B->>S: stripe.customers.list()
-        S->>B: Customer encontrado
-        B->>M: Customer data
-        M->>B: POST /api/invoices/{accountId}
-        B->>S: stripe.invoices.create()
+        Note over M: Busca customer_id en storage local
+        M->>J: GET /connected_customers/{customer_id}?connected_account_id=xxx
+        J->>S: stripe.customers.retrieve()
+        S->>J: Customer encontrado
+        J->>M: ConnectedCustomerResponse
+        M->>J: POST /invoices?connected_account_id=xxx
+        J->>S: stripe.invoices.create()
         S->>S: Envía email automático
         S->>C: Email con factura
         M->>M: Muestra confirmación
@@ -411,47 +381,54 @@ sequenceDiagram
 
 ## ✅ Checklist de Implementación
 
-- [x] Service `customer.ts` con todos los métodos
+- [x] Service `customer.ts` con métodos actualizados para Jeturing API
 - [x] Screen `PaymentSuccessScreen` con opciones
 - [x] Screen `CustomerRegistrationScreen` con formulario
 - [x] QR Code generation con `react-native-qrcode-svg`
 - [x] Integración con navegación
 - [x] Animaciones Lottie para feedback
-- [ ] Backend endpoints (pendiente deployment)
+- [x] Actualizado para usar `POST /connected_customers/`
+- [x] Actualizado para usar query params (`connected_account_id`)
+- [x] Actualizado para usar `X-API-Key` header
+- [x] API Key management con AsyncStorage
+- [x] Validación de errores 422
+- [ ] Testing con Jeturing API real
+- [ ] Confirmar endpoint de invoices
+- [ ] Implementar workaround para phone lookup
 - [ ] Deep linking configuration
 - [ ] Email templates en Stripe
-- [ ] Testing end-to-end
 
 ## 🚀 Próximos Pasos
 
-1. **Deploy Backend Hub** con los 3 endpoints
-2. **Configurar Deep Links** en app.json y backend
-3. **Personalizar Email Templates** en Stripe Dashboard
-4. **Testing**:
-   - Flujo completo cliente nuevo
-   - Flujo completo cliente existente
-   - Validaciones y errores
-5. **Documentar** para merchants
+1. **Configurar API Key** en la app
+2. **Testing con Jeturing API** endpoints reales
+3. **Confirmar Invoice Endpoint** con equipo Jeturing
+4. **Implementar Phone Lookup** workaround (local storage o nuevo endpoint)
+5. **Configurar Deep Links** en app.json y backend
+6. **Personalizar Email Templates** en Stripe Dashboard
+7. **Testing End-to-End**
 
 ## 💡 Consideraciones
 
-### Seguridad
-- Validar todos los inputs del cliente
-- Verificar ownership del payment_intent antes de crear invoice
-- Rate limiting en lookup endpoint
+### API Key
+- Debe configurarse durante onboarding o en settings
+- Se almacena de forma segura en AsyncStorage
+- En producción, considerar encriptación adicional
 
-### UX
-- Mostrar preview de la factura antes de enviar
-- Permitir regenerar QR si cliente lo necesita
-- Timeout del QR después de X minutos
+### Phone Lookup
+- Jeturing API no tiene endpoint directo
+- Opciones:
+  1. Almacenar mapping local (customer_id ↔ phone)
+  2. Solicitar nuevo endpoint `/connected_customers/search`
+  3. Usar metadata y búsqueda en servidor
 
-### Datos
-- Almacenar relación payment_intent ↔ customer en metadata
-- Permitir búsqueda de customers por múltiples campos
-- Implementar caché para lookups frecuentes
+### Invoices
+- Endpoint pendiente de confirmación
+- Verificar estructura de request/response
+- Confirmar si auto-envía email
 
 ---
 
 **Última actualización**: Diciembre 22, 2025
-**Versión**: 1.0.0
-**Estado**: ✅ Frontend completo, ⏳ Backend pendiente
+**Versión**: 2.0.0 (Actualizado para Jeturing API v2.5.0)
+**Estado**: ✅ Integrado con Jeturing API, ⏳ Testing pendiente
