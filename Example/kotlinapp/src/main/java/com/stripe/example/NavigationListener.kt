@@ -99,4 +99,14 @@ interface NavigationListener {
      * Notify the `Activity` that the user has finished creating a location.
      */
     fun onLocationCreated()
+
+    /**
+     * Notify the `Activity` that the user wants to view the registration screen
+     */
+    fun onRequestRegistration()
+
+    /**
+     * Notify the `Activity` that the user wants to use the simplified payment flow
+     */
+    fun onSelectSimplePaymentWorkflow()
 }
