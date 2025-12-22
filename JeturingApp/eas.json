@@ -1,0 +1,42 @@
+{
+  "cli": {
+    "version": ">= 12.0.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "channel": "preview"
+    },
+    "production": {
+      "channel": "production",
+      "ios": {
+        "bundleIdentifier": "com.jeturing.pay",
+        "buildConfiguration": "Release"
+      },
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      }
+    }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "appleId": "developer@jeturing.com",
+        "ascAppId": "jeturing-pay-id",
+        "appleTeamId": "JETURING_TEAM_ID"
+      },
+      "android": {
+        "serviceAccountKeyPath": "./service-account.json",
+        "track": "production"
+      }
+    }
+  }
+}
