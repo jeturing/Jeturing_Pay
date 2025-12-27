@@ -6,7 +6,7 @@
 import axios from 'axios';
 import { Alert } from 'react-native';
 
-const API_URL = 'https://api.jeturing.com';
+const API_URL = 'https://api-001.sajet.us';
 const JETURING_FEE_PERCENT = 0.01; // 1% platform fee
 
 export interface ConnectedAccount {

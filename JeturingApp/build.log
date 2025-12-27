@@ -1,0 +1,6 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -scheme JeturingPay -workspace ios/JeturingPay.xcworkspace -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 15" -derivedDataPath ios/build
+
+Build settings from command line:
+    SDKROOT = iphonesimulator26.2
+

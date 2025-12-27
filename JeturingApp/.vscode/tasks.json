@@ -1,0 +1,28 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "build-jeturingapp",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"install",
+				"&&",
+				"npm",
+				"run",
+				"build:production"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "build-jeturingapp",
+			"type": "shell",
+			"command": "npm install && npm run build:production",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}

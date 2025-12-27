@@ -1,0 +1,39 @@
+{
+  "entryPoints": ["./src"],
+  "entryPointStrategy": "expand",
+  "out": "./docs/api-reference",
+  "name": "Jeturing Pay - API Reference",
+  "readme": "../README.md",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeInternal": true,
+  "excludeExternals": true,
+  "plugin": ["typedoc-plugin-mermaid"],
+  "theme": "default",
+  "navigation": {
+    "includeCategories": true,
+    "includeGroups": true
+  },
+  "categorizeByGroup": true,
+  "defaultCategory": "Other",
+  "categoryOrder": [
+    "Services",
+    "Hooks",
+    "Contexts",
+    "Components",
+    "Screens",
+    "Utils",
+    "Types",
+    "*"
+  ],
+  "sort": ["source-order"],
+  "visibilityFilters": {
+    "protected": false,
+    "private": false,
+    "inherited": true,
+    "external": false
+  },
+  "searchInComments": true,
+  "cleanOutputDir": true
+}

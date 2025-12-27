@@ -8,7 +8,7 @@ import axios from 'axios';
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const API_URL = 'https://api.jeturing.com';
+const API_URL = 'https://api-001.sajet.us';
 const API_KEY_STORAGE = '@jeturing_api_key';
 
 // Note: In production, this should come from secure environment config

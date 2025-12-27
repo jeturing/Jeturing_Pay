@@ -2,6 +2,7 @@
   "expo": {
     "name": "Jeturing Pay",
     "slug": "jeturing-pay",
+    "scheme": "jeturing",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,10 +21,14 @@
       "infoPlist": {
         "NFCReaderUsageDescription": "Jeturing Pay necesita acceso NFC para procesar pagos con Tap to Pay",
         "NSLocationWhenInUseUsageDescription": "Necesitamos tu ubicación para procesar pagos seguros",
-        "NSCameraUsageDescription": "Para escanear códigos QR de pago"
+        "NSCameraUsageDescription": "Para escanear códigos QR de pago",
+        "ITSAppUsesNonExemptEncryption": false
       },
       "entitlements": {
-        "com.apple.developer.nfc.readersession.formats": ["NDEF", "TAG"],
+        "com.apple.developer.nfc.readersession.formats": [
+          "NDEF",
+          "TAG"
+        ],
         "com.apple.developer.contactless-payment": true
       }
     },
@@ -52,14 +57,79 @@
           "enableApplePay": true
         }
       ],
-      "expo-build-properties"
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "13.4",
+            "flipper": false
+          },
+          "android": {
+            "compileSdkVersion": 34,
+            "targetSdkVersion": 34,
+            "minSdkVersion": 26,
+            "buildToolsVersion": "34.0.0",
+            "enableProguardInReleaseBuilds": true,
+            "enableShrinkResourcesInReleaseBuilds": true
+          }
+        }
+      ],
+      "expo-asset",
+      "expo-font"
     ],
     "extra": {
-      "eas": {
-        "projectId": "jeturing-pay-expo"
+      "stripePublishableKey": "pk_test_dDfTWCF7FwlZ1yKqMKYf9Jqx00cjYGa1IX",
+      "apiUrl": "https://api-001.sajet.us",
+      "featureFlags": {
+        "enableTapToPay": true,
+        "enablePaymentLinks": true,
+        "enableQrPayments": true,
+        "enableRecurringPayments": false,
+        "enableTipping": true,
+        "enableTerminalReaders": true,
+        "enableSimulatedReaders": false,
+        "enableCustomerLookup": true,
+        "enableCustomerInvoices": true,
+        "enableDarkMode": false,
+        "enableAnimations": true,
+        "enableBiometricAuth": true,
+        "enableSentry": true,
+        "enableAnalytics": true,
+        "enableCrashReporting": true,
+        "enableDebugMode": false,
+        "enableMockData": false,
+        "enableApiLogging": false,
+        "enableSelfOnboarding": true,
+        "enableExpressOnboarding": true,
+        "enableMposTransactions": true,
+        "enableMposRefunds": true,
+        "apiVersion": "2.5.0",
+        "minAppVersion": "1.0.0",
+        "maintenanceMode": false,
+        "maintenanceMessage": ""
       },
-      "stripePublishableKey": "pk_live_jeturing",
-      "apiUrl": "https://api.jeturing.com"
+      "eas": {
+        "projectId": "cbd38581-95c3-44f5-875c-d40629f1fb13"
+      }
+    },
+    "owner": "jeturing",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/cbd38581-95c3-44f5-875c-d40629f1fb13",
+      "fallbackToCacheTimeout": 30000
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "jeturing",
+            "project": "jeturing-pay-mobile"
+          }
+        }
+      ]
     }
   }
 }

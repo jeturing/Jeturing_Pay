@@ -1,0 +1,49 @@
+{
+  "name": "jeturing-pay-backend",
+  "version": "1.0.0",
+  "description": "Jeturing Pay Backend Hub - Stripe Connect Integration",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test": "jest",
+    "test:e2e": "jest --config jest.e2e.config.js",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/**/*.ts",
+    "docker:build": "docker build -t jeturing-pay-backend .",
+    "docker:run": "docker run -p 4567:4567 --env-file .env jeturing-pay-backend"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "stripe": "^14.8.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.10.6",
+    "@types/supertest": "^6.0.2",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4",
+    "ts-jest": "^29.1.1",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "stripe",
+    "payment",
+    "terminal",
+    "connect"
+  ],
+  "author": "Jeturing",
+  "license": "MIT"
+}

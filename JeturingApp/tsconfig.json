@@ -3,7 +3,9 @@
   "compilerOptions": {
     "strict": true,
     "target": "esnext",
-    "lib": ["esnext"],
+    "lib": [
+      "esnext"
+    ],
     "jsx": "react-native",
     "module": "esnext",
     "moduleResolution": "node",
@@ -13,20 +15,32 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@components/*": ["src/components/*"],
-      "@screens/*": ["src/screens/*"],
-      "@services/*": ["src/services/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@utils/*": ["src/utils/*"],
-      "@animations/*": ["animations/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@screens/*": [
+        "src/screens/*"
+      ],
+      "@services/*": [
+        "src/services/*"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@animations/*": [
+        "animations/*"
+      ]
     }
   },
   "include": [
     "**/*.ts",
-    "**/*.tsx",
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts"
+    "**/*.tsx"
   ],
   "exclude": [
     "node_modules"
