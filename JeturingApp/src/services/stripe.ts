@@ -5,9 +5,16 @@
 
 import axios from 'axios';
 import { Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const API_URL = 'https://api-001.sajet.us';
 const JETURING_FEE_PERCENT = 0.01; // 1% platform fee
+const API_KEY_STORAGE = '@jeturing_api_key';
+
+// Helper to get API key
+const getApiKey = async (): Promise<string | null> => {
+  return await AsyncStorage.getItem(API_KEY_STORAGE);
+};
 
 export interface ConnectedAccount {
   id: string;
@@ -37,6 +44,7 @@ export interface PaymentLink {
 
 /**
  * Create a new Stripe Connected Account
+ * Uses the onboarding endpoint to create an Express account
  * Automatically sets up 1% platform fee for Jeturing
  */
 export const createConnectedAccount = async (
@@ -45,21 +53,41 @@ export const createConnectedAccount = async (
   metadata?: Record<string, string>
 ): Promise<ConnectedAccount> => {
   try {
-    const response = await axios.post(`${API_URL}/api/stripe/connect`, {
-      email,
-      business_name: businessName,
-      metadata: {
-        platform: 'jeturing',
-        ...metadata
+    const apiKey = await getApiKey();
+    
+    // Use the correct endpoint: /stripe/onboarding/create-link
+    // This endpoint creates a new account if 'account' is not provided
+    const response = await axios.post(
+      `${API_URL}/stripe/onboarding/create-link`,
+      {
+        // Don't pass account - this will create a new one
+        refresh_url: 'jeturingpay://onboarding/refresh',
+        return_url: 'jeturingpay://onboarding/complete',
+        type: 'account_onboarding',
       },
-      capabilities: {
-        card_payments: { requested: true },
-        transfers: { requested: true },
-        tap_to_pay: { requested: true }
+      {
+        headers: {
+          'x-api-key': apiKey || '',
+          'Content-Type': 'application/json',
+        },
       }
-    });
+    );
 
-    return response.data;
+    // The response contains the onboarding URL and account info
+    // Extract account ID from the URL (format: /v1/accounts/acct_xxx/...)
+    const onboardingUrl = response.data.url;
+    const accountIdMatch = onboardingUrl?.match(/acct_[a-zA-Z0-9]+/);
+    const accountId = accountIdMatch ? accountIdMatch[0] : `acct_temp_${Date.now()}`;
+
+    // Return a connected account object
+    return {
+      id: accountId,
+      email: email,
+      business_name: businessName,
+      created: Math.floor(Date.now() / 1000),
+      charges_enabled: false, // Will be enabled after onboarding
+      payouts_enabled: false, // Will be enabled after onboarding
+    };
   } catch (error: any) {
     console.error('Error creating connected account:', error);
     Alert.alert('Error', 'No se pudo crear la cuenta. Intenta nuevamente.');

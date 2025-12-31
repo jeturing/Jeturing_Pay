@@ -1,5 +1,14 @@
 pluginManagement {
     includeBuild(new File(["node", "--print", "require.resolve('@react-native/gradle-plugin/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim()).getParentFile().toString())
+    // Include expo-module-gradle-plugin for Expo modules
+    includeBuild(new File(["node", "--print", "require.resolve('expo-modules-core/package.json', { paths: [require.resolve('expo/package.json')] })"].execute(null, rootDir).text.trim()).getParentFile().toString() + "/expo-module-gradle-plugin")
+    // Include expo-dev-launcher gradle plugin
+    includeBuild(new File(["node", "--print", "require.resolve('expo-dev-launcher/package.json', { paths: [require.resolve('expo/package.json')] })"].execute(null, rootDir).text.trim()).getParentFile().toString() + "/expo-dev-launcher-gradle-plugin")
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
 }
 plugins { id("com.facebook.react.settings") }
 
