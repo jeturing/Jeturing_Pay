@@ -52,13 +52,13 @@ target 'JeturingPay' do
       :ccache_enabled => podfile_properties['apple.ccacheEnabled'] == 'true',
     )
 
-    # Fix deployment target for all pods to minimum 13.4
+    # Fix deployment target for all pods to minimum 15.1 (Expo SDK 52 requirement)
     installer.pods_project.targets.each do |target|
       target.build_configurations.each do |config|
         # Ensure minimum deployment target
         deployment_target = config.build_settings['IPHONEOS_DEPLOYMENT_TARGET']
-        if deployment_target && deployment_target.to_f < 13.4
-          config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.4'
+        if deployment_target && deployment_target.to_f < 15.1
+          config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.1'
         end
         
         # Apply Xcode 15+ recommended settings
