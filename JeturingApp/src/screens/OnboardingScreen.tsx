@@ -44,6 +44,13 @@ const OnboardingScreen = () => {
           <Text style={styles.buttonText}>Activar cuenta Jeturing Pay</Text>
         </TouchableOpacity>
 
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={() => navigation.navigate('Login' as never)}
+        >
+          <Text style={styles.loginButtonText}>Ya tengo una cuenta</Text>
+        </TouchableOpacity>
+
         <Text style={styles.terms}>
           Al continuar, aceptas los Términos y Condiciones
         </Text>
@@ -101,11 +108,25 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     borderRadius: 12,
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: 12,
   },
   buttonText: {
     color: '#ffffff',
     fontSize: 18,
+    fontWeight: '600',
+  },
+  loginButton: {
+    backgroundColor: 'transparent',
+    paddingVertical: 14,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: '#6366f1',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  loginButtonText: {
+    color: '#6366f1',
+    fontSize: 16,
     fontWeight: '600',
   },
   terms: {

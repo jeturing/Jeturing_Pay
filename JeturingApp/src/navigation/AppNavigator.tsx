@@ -11,6 +11,7 @@ import { useStripeAccount } from '../contexts/StripeAccountContext';
 // Auth Stack Screens
 import OnboardingScreen from '../screens/OnboardingScreen';
 import ConnectAccountScreen from '../screens/ConnectAccountScreen';
+import LoginScreen from '../screens/LoginScreen';
 
 // App Stack Screens
 import DashboardScreen from '../screens/DashboardScreen';
@@ -84,6 +85,7 @@ const AppNavigator = () => {
         <>
           <Stack.Screen name="Onboarding" component={OnboardingScreen} />
           <Stack.Screen name="ConnectAccount" component={ConnectAccountScreen} />
+          <Stack.Screen name="Login" component={LoginScreen} />
         </>
       ) : (
         // App Stack

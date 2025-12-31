@@ -16,6 +16,16 @@ const getApiKey = async (): Promise<string | null> => {
   return await AsyncStorage.getItem(API_KEY_STORAGE);
 };
 
+// Helper to set API key
+export const setApiKey = async (key: string): Promise<void> => {
+  await AsyncStorage.setItem(API_KEY_STORAGE, key);
+};
+
+// Helper to clear API key
+export const clearApiKey = async (): Promise<void> => {
+  await AsyncStorage.removeItem(API_KEY_STORAGE);
+};
+
 export interface ConnectedAccount {
   id: string;
   email: string;
@@ -188,11 +198,44 @@ export const createRefund = async (
 };
 
 /**
+ * Login with existing Stripe Connected Account
+ * Verifies the account exists and retrieves its details
+ */
+export const loginWithStripeAccount = async (accountId: string): Promise<any> => {
+  try {
+    const apiKey = await getApiKey();
+
+    const response = await axios.get(
+      `${API_URL}/stripe/onboarding/accounts/${accountId}`,
+      {
+        headers: {
+          'x-api-key': apiKey || '',
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    return response.data;
+  } catch (error: any) {
+    console.error('Error logging in with Stripe account:', error);
+    throw error;
+  }
+};
+
+/**
  * Get account balance and fee summary
  */
 export const getAccountSummary = async (accountId: string): Promise<any> => {
   try {
-    const response = await axios.get(`${API_URL}/api/accounts/${accountId}/summary`);
+    const apiKey = await getApiKey();
+    const response = await axios.get(
+      `${API_URL}/stripe/accounts/${accountId}/summary`,
+      {
+        headers: {
+          'x-api-key': apiKey || '',
+        },
+      }
+    );
     return response.data;
   } catch (error: any) {
     console.error('Error fetching account summary:', error);
@@ -209,9 +252,17 @@ export const updateDispute = async (
   evidence: any
 ): Promise<any> => {
   try {
-    const response = await axios.post(`${API_URL}/api/disputes/${accountId}/${disputeId}`, {
-      evidence
-    });
+    const apiKey = await getApiKey();
+    const response = await axios.post(
+      `${API_URL}/stripe/disputes/${accountId}/${disputeId}`,
+      { evidence },
+      {
+        headers: {
+          'x-api-key': apiKey || '',
+          'Content-Type': 'application/json',
+        },
+      }
+    );
 
     return response.data;
   } catch (error: any) {
@@ -223,6 +274,7 @@ export const updateDispute = async (
 
 export default {
   createConnectedAccount,
+  loginWithStripeAccount,
   processPayment,
   createPaymentLink,
   createRefund,
