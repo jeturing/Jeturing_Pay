@@ -74,50 +74,65 @@ export interface FeatureFlags {
 const getEnvDefaults = (): FeatureFlags => {
   const extra = Constants.expoConfig?.extra?.featureFlags || {};
   
+  // Helper to read from process.env with fallback to extra config
+  const getEnvFlag = (envKey: string, extraKey: keyof typeof extra, defaultValue: boolean | string): any => {
+    // Check process.env first (EXPO_PUBLIC_FF_* variables)
+    const envValue = process.env[envKey];
+    if (envValue !== undefined) {
+      // Convert string to boolean for flags
+      if (typeof defaultValue === 'boolean') {
+        return envValue === 'true' || envValue === '1';
+      }
+      return envValue;
+    }
+    // Fallback to app.json extra config
+    return extra[extraKey] ?? defaultValue;
+  };
+  
   return {
     // Payment Features
-    enableTapToPay: extra.enableTapToPay ?? true,
-    enablePaymentLinks: extra.enablePaymentLinks ?? true,
-    enableQrPayments: extra.enableQrPayments ?? true,
-    enableRecurringPayments: extra.enableRecurringPayments ?? false,
-    enableTipping: extra.enableTipping ?? true,
+    enableTapToPay: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_TAP_TO_PAY', 'enableTapToPay', true),
+    enablePaymentLinks: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_PAYMENT_LINKS', 'enablePaymentLinks', true),
+    enableQrPayments: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_QR_PAYMENTS', 'enableQrPayments', true),
+    enableRecurringPayments: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_RECURRING_PAYMENTS', 'enableRecurringPayments', false),
+    enableTipping: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_TIPPING', 'enableTipping', true),
     
     // Terminal Features
-    enableTerminalReaders: extra.enableTerminalReaders ?? true,
-    enableSimulatedReaders: extra.enableSimulatedReaders ?? __DEV__,
+    enableTerminalReaders: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_TERMINAL_READERS', 'enableTerminalReaders', true),
+    enableSimulatedReaders: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_SIMULATED_READERS', 'enableSimulatedReaders', __DEV__),
     
     // Customer Features
-    enableCustomerLookup: extra.enableCustomerLookup ?? true,
-    enableCustomerInvoices: extra.enableCustomerInvoices ?? true,
+    enableCustomerLookup: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_CUSTOMER_LOOKUP', 'enableCustomerLookup', true),
+    enableCustomerInvoices: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_CUSTOMER_INVOICES', 'enableCustomerInvoices', true),
     
     // UI Features
-    enableDarkMode: extra.enableDarkMode ?? false,
-    enableAnimations: extra.enableAnimations ?? true,
-    enableBiometricAuth: extra.enableBiometricAuth ?? true,
+    enableDarkMode: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_DARK_MODE', 'enableDarkMode', false),
+    enableAnimations: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_ANIMATIONS', 'enableAnimations', true),
+    enableBiometricAuth: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_BIOMETRIC_AUTH', 'enableBiometricAuth', true),
     
     // Analytics & Monitoring
-    enableSentry: extra.enableSentry ?? !__DEV__,
-    enableAnalytics: extra.enableAnalytics ?? !__DEV__,
-    enableCrashReporting: extra.enableCrashReporting ?? !__DEV__,
+    enableSentry: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_SENTRY', 'enableSentry', !__DEV__),
+    enableAnalytics: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_ANALYTICS', 'enableAnalytics', !__DEV__),
+    enableCrashReporting: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_CRASH_REPORTING', 'enableCrashReporting', !__DEV__),
     
     // Developer Features
-    enableDebugMode: extra.enableDebugMode ?? __DEV__,
-    enableMockData: extra.enableMockData ?? false,
-    enableApiLogging: extra.enableApiLogging ?? __DEV__,
+    enableDebugMode: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_DEBUG_MODE', 'enableDebugMode', __DEV__),
+    enableMockData: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_MOCK_DATA', 'enableMockData', false),
+    enableApiLogging: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_API_LOGGING', 'enableApiLogging', __DEV__),
     
     // Onboarding
-    enableSelfOnboarding: extra.enableSelfOnboarding ?? true,
-    enableExpressOnboarding: extra.enableExpressOnboarding ?? true,
+    enableSelfOnboarding: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_SELF_ONBOARDING', 'enableSelfOnboarding', true),
+    enableExpressOnboarding: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_EXPRESS_ONBOARDING', 'enableExpressOnboarding', true),
     
     // MPOS Features
-    enableMposTransactions: extra.enableMposTransactions ?? true,
-    enableMposRefunds: extra.enableMposRefunds ?? true,
+    enableMposTransactions: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_MPOS_TRANSACTIONS', 'enableMposTransactions', true),
+    enableMposRefunds: getEnvFlag('EXPO_PUBLIC_FF_ENABLE_MPOS_REFUNDS', 'enableMposRefunds', true),
     
     // API Configuration
-    apiVersion: extra.apiVersion ?? '2.5.0',
-    minAppVersion: extra.minAppVersion ?? '1.0.0',
-    maintenanceMode: extra.maintenanceMode ?? false,
-    maintenanceMessage: extra.maintenanceMessage ?? '',
+    apiVersion: getEnvFlag('EXPO_PUBLIC_FF_API_VERSION', 'apiVersion', '2.5.0'),
+    minAppVersion: getEnvFlag('EXPO_PUBLIC_FF_MIN_APP_VERSION', 'minAppVersion', '1.0.0'),
+    maintenanceMode: getEnvFlag('EXPO_PUBLIC_FF_MAINTENANCE_MODE', 'maintenanceMode', false),
+    maintenanceMessage: getEnvFlag('EXPO_PUBLIC_FF_MAINTENANCE_MESSAGE', 'maintenanceMessage', ''),
   };
 };
 

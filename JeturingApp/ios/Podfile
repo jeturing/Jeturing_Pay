@@ -60,7 +60,17 @@ target 'JeturingPay' do
         if deployment_target && deployment_target.to_f < 13.4
           config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.4'
         end
+        
+        # Apply Xcode 15+ recommended settings
+        config.build_settings['ENABLE_USER_SCRIPT_SANDBOXING'] = 'NO'
+        config.build_settings['DEAD_CODE_STRIPPING'] = 'YES'
       end
+    end
+    
+    # Update Pods project to recommended settings
+    installer.pods_project.build_configurations.each do |config|
+      config.build_settings['CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER'] = 'NO'
+      config.build_settings['ENABLE_USER_SCRIPT_SANDBOXING'] = 'NO'
     end
 
     # This is necessary for Xcode 14, because it signs resource bundles by default

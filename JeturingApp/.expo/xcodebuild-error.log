@@ -1,0 +1,17 @@
+/Users/owner/Desktop/APP-Mobil/Jeturing_pay/Jeturing_Pay/JeturingApp/ios/Pods/StripeFinancialConnections/StripeFinancialConnections/StripeFinancialConnections/Source/Native/Shared/UIViewController+KeyboardAvoiding.swift:135:18: warning: 'TARGET_OS_*' preprocessor macros are not available in Swift; use 'targetEnvironment(macCatalyst)' instead
+            #if !TARGET_OS_MACCATALYST
+                 ^~~~~~~~~~~~~~~~~~~~~
+/Users/owner/Desktop/APP-Mobil/Jeturing_pay/Jeturing_Pay/JeturingApp/ios/Pods/StripeFinancialConnections/StripeFinancialConnections/StripeFinancialConnections/Source/Native/Shared/UIViewController+KeyboardAvoiding.swift:135:18: note: replace with 'targetEnvironment(macCatalyst)'
+            #if !TARGET_OS_MACCATALYST
+                 ^~~~~~~~~~~~~~~~~~~~~
+                 targetEnvironment(macCatalyst)
+** BUILD FAILED **
+
+
+The following build commands failed:
+	CompileC /Users/owner/Library/Developer/Xcode/DerivedData/JeturingPay-btivzerozueqctdcydwynpnhqryt/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/RCTTypeSafety.build/Objects-normal/x86_64/RCTTypedModuleConstants.o /Users/owner/Desktop/APP-Mobil/Jeturing_pay/Jeturing_Pay/JeturingApp/node_modules/react-native/Libraries/TypeSafety/RCTTypedModuleConstants.mm normal x86_64 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler (in target 'RCTTypeSafety' from project 'Pods')
+	CompileC /Users/owner/Library/Developer/Xcode/DerivedData/JeturingPay-btivzerozueqctdcydwynpnhqryt/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/RNSVG.build/Objects-normal/x86_64/RNSVGContextBrush.o /Users/owner/Desktop/APP-Mobil/Jeturing_pay/Jeturing_Pay/JeturingApp/node_modules/react-native-svg/apple/Brushes/RNSVGContextBrush.mm normal x86_64 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler (in target 'RNSVG' from project 'Pods')
+	CompileC /Users/owner/Library/Developer/Xcode/DerivedData/JeturingPay-btivzerozueqctdcydwynpnhqryt/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/RNSVG.build/Objects-normal/x86_64/RNSVGClipPathManager.o /Users/owner/Desktop/APP-Mobil/Jeturing_pay/Jeturing_Pay/JeturingApp/node_modules/react-native-svg/apple/ViewManagers/RNSVGClipPathManager.mm normal x86_64 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler (in target 'RNSVG' from project 'Pods')
+	CompileC /Users/owner/Library/Developer/Xcode/DerivedData/JeturingPay-btivzerozueqctdcydwynpnhqryt/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/RNSVG.build/Objects-normal/x86_64/RNSVGCircleManager.o /Users/owner/Desktop/APP-Mobil/Jeturing_pay/Jeturing_Pay/JeturingApp/node_modules/react-native-svg/apple/ViewManagers/RNSVGCircleManager.mm normal x86_64 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler (in target 'RNSVG' from project 'Pods')
+	Building workspace JeturingPay with scheme JeturingPay and configuration Debug
+(5 failures)
