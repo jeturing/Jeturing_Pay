@@ -1,0 +1,76 @@
+{
+  "id": "com.jeturing.pay",
+  "version": "1.0.0",
+  "name": "Jeturing Pay",
+  "icon": "./assets/icon.png",
+  "permissions": [
+    {
+      "permission": "connected_account_read",
+      "purpose": "Para leer información de las cuentas conectadas de Stripe Connect"
+    },
+    {
+      "permission": "connected_account_write", 
+      "purpose": "Para gestionar las cuentas conectadas de Stripe Connect"
+    },
+    {
+      "permission": "payment_intent_read",
+      "purpose": "Para leer información de los pagos"
+    },
+    {
+      "permission": "payment_intent_write",
+      "purpose": "Para procesar pagos con tarjeta"
+    },
+    {
+      "permission": "customer_read",
+      "purpose": "Para leer información de clientes"
+    },
+    {
+      "permission": "customer_write",
+      "purpose": "Para crear y gestionar clientes"
+    },
+    {
+      "permission": "balance_read",
+      "purpose": "Para leer el balance de la cuenta"
+    },
+    {
+      "permission": "refund_write",
+      "purpose": "Para procesar reembolsos"
+    }
+  ],
+  "ui_extension": {
+    "views": [
+      {
+        "viewport": "stripe.dashboard.home",
+        "component": "JeturingHome"
+      },
+      {
+        "viewport": "stripe.dashboard.payment.list",
+        "component": "PaymentList"
+      },
+      {
+        "viewport": "stripe.dashboard.customer.detail",
+        "component": "CustomerDetail"
+      }
+    ],
+    "content_security_policy": {
+      "connect-src": [
+        "https://api-001.sajet.us",
+        "https://*.stripe.com"
+      ],
+      "image-src": [
+        "https://*.stripe.com",
+        "https://api-001.sajet.us"
+      ]
+    }
+  },
+  "allowed_redirect_uris": [
+    "https://api-001.sajet.us/stripe/callback",
+    "jeturingpay://callback"
+  ],
+  "post_install_action": {
+    "type": "external",
+    "url": "https://api-001.sajet.us/stripe/app/setup"
+  },
+  "stripe_api_access_type": "platform",
+  "distribution_type": "private"
+}

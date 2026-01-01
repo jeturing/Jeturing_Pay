@@ -277,6 +277,101 @@ export const updateDispute = async (
   }
 };
 
+/**
+ * Search for a connected account by business name and phone
+ * This searches in local storage first (for quick login on same device)
+ * Then optionally can search on backend if implemented
+ * @param businessName - Business name to search
+ * @param phone - Phone number to verify
+ * @returns Account info if found
+ */
+export const searchAccountByBusiness = async (
+  businessName: string,
+  phone: string
+): Promise<{ accountId: string; businessName: string; phone: string } | null> => {
+  try {
+    const apiKey = await getApiKey();
+    
+    // First, try to search in backend (if endpoint exists)
+    try {
+      const response = await axios.get(
+        `${API_URL}/connected_customers/`,
+        {
+          params: {
+            business_name: businessName,
+            phone: phone,
+          },
+          headers: {
+            'x-api-key': apiKey || '',
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      
+      if (response.data && response.data.length > 0) {
+        const customer = response.data[0];
+        return {
+          accountId: customer.stripe_account_id || customer.account_id,
+          businessName: customer.business_name || businessName,
+          phone: customer.phone || phone,
+        };
+      }
+    } catch (backendError: any) {
+      // Backend search not available or failed
+      console.log('Backend search not available, using local only');
+    }
+    
+    // If no backend result, check local storage
+    // This is useful for same-device login attempts
+    const localAccount = await AsyncStorage.getItem('@jeturing_local_accounts');
+    if (localAccount) {
+      const accounts = JSON.parse(localAccount);
+      const found = accounts.find((acc: any) => 
+        acc.businessName?.toLowerCase().includes(businessName.toLowerCase()) &&
+        acc.phone?.replace(/\D/g, '').includes(phone.replace(/\D/g, ''))
+      );
+      if (found) {
+        return found;
+      }
+    }
+    
+    return null;
+  } catch (error: any) {
+    console.error('Error searching account:', error);
+    return null;
+  }
+};
+
+/**
+ * Save account to local storage for future quick searches
+ */
+export const saveAccountLocally = async (
+  accountId: string,
+  businessName: string,
+  phone: string,
+  email: string
+): Promise<void> => {
+  try {
+    const existing = await AsyncStorage.getItem('@jeturing_local_accounts');
+    const accounts = existing ? JSON.parse(existing) : [];
+    
+    // Check if already exists
+    const index = accounts.findIndex((acc: any) => acc.accountId === accountId);
+    
+    const accountData = { accountId, businessName, phone, email, updatedAt: Date.now() };
+    
+    if (index >= 0) {
+      accounts[index] = accountData;
+    } else {
+      accounts.push(accountData);
+    }
+    
+    await AsyncStorage.setItem('@jeturing_local_accounts', JSON.stringify(accounts));
+  } catch (error) {
+    console.error('Error saving account locally:', error);
+  }
+};
+
 export default {
   createConnectedAccount,
   loginWithStripeAccount,
@@ -285,5 +380,7 @@ export default {
   createRefund,
   getAccountSummary,
   updateDispute,
+  searchAccountByBusiness,
+  saveAccountLocally,
   JETURING_FEE_PERCENT
 };

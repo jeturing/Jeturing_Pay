@@ -1,0 +1,23 @@
+{
+  "name": "jeturing-pay-stripe-app",
+  "version": "1.0.0",
+  "description": "Stripe App para Jeturing Pay - Sistema de pagos móviles con Stripe Connect",
+  "author": "Jeturing",
+  "license": "MIT",
+  "scripts": {
+    "build": "stripe apps build",
+    "upload": "stripe apps upload",
+    "upload:test": "stripe apps upload --mode test",
+    "start": "stripe apps start"
+  },
+  "dependencies": {
+    "@stripe/ui-extension-sdk": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "typescript": "^5.0.0"
+  },
+  "stripe": {
+    "appId": "com.jeturing.pay"
+  }
+}
