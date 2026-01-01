@@ -75,7 +75,8 @@
         }
       ],
       "expo-asset",
-      "expo-font"
+      "expo-font",
+      "expo-secure-store"
     ],
     "extra": {
       "stripePublishableKey": "pk_test_dDfTWCF7FwlZ1yKqMKYf9Jqx00cjYGa1IX",

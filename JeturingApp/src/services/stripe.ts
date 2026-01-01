@@ -200,10 +200,15 @@ export const createRefund = async (
 /**
  * Login with existing Stripe Connected Account
  * Verifies the account exists and retrieves its details
+ * @param accountId - The Stripe account ID (acct_xxx)
+ * @param apiKeyOverride - Optional API key to use instead of stored one
  */
-export const loginWithStripeAccount = async (accountId: string): Promise<any> => {
+export const loginWithStripeAccount = async (accountId: string, apiKeyOverride?: string): Promise<any> => {
   try {
-    const apiKey = await getApiKey();
+    const apiKey = apiKeyOverride || await getApiKey();
+    
+    console.log('Attempting login with account:', accountId);
+    console.log('Using API key:', apiKey ? '[PRESENT]' : '[MISSING]');
 
     const response = await axios.get(
       `${API_URL}/stripe/onboarding/accounts/${accountId}`,
