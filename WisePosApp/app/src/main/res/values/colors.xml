@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors -->
+    <color name="primary">#6772E5</color>
+    <color name="primary_dark">#5469D4</color>
+    <color name="primary_light">#7795F8</color>
+    
+    <!-- Accent -->
+    <color name="accent">#32D583</color>
+    
+    <!-- Status Colors -->
+    <color name="success_green">#32D583</color>
+    <color name="warning_orange">#FFA500</color>
+    <color name="error_red">#E25950</color>
+    
+    <!-- Background Colors -->
+    <color name="background">#F7FAFC</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="card_background">#FFFFFF</color>
+    
+    <!-- Text Colors - Updated for Design System -->
+    <color name="text_primary">#0C0E1D</color>
+    <color name="text_secondary">#4551A1</color>
+    <color name="text_hint">#A3ACB9</color>
+    
+    <!-- Stripe Colors -->
+    <color name="stripe_blue">#6772E5</color>
+    <color name="stripe_green">#32D583</color>
+    
+    <!-- Launcher Icon -->
+    <color name="ic_launcher_background">#FFFFFF</color>
+    
+    <!-- Design System - Tailwind Palette -->
+    <color name="primary_blue">#0022FF</color>
+    <color name="background_light">#F8F8FC</color>
+    <color name="background_secondary">#E6E8F4</color>
+    <color name="divider">#E0E0E0</color>
+    
+    <!-- Extended Colors -->
+    <color name="color_error">#E25950</color>
+    <color name="color_error_light">#FFEBEE</color>
+    <color name="color_success">#32D583</color>
+    <color name="color_success_light">#E8F5E9</color>
+</resources>

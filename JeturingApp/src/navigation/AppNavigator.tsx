@@ -23,6 +23,12 @@ import TransactionHistoryScreen from '../screens/TransactionHistoryScreen';
 import TransactionDetailScreen from '../screens/TransactionDetailScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
+// Fase 1 - Critical Payment Flow Screens
+import NumpadScreen from '../screens/NumpadScreen';
+import NewPaymentScreen from '../screens/NewPaymentScreen';
+import PaymentModeScreen from '../screens/PaymentModeScreen';
+import CancelPaymentScreen from '../screens/CancelPaymentScreen';
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -91,6 +97,10 @@ const AppNavigator = () => {
         // App Stack
         <>
           <Stack.Screen name="AppTabs" component={AppTabs} />
+          <Stack.Screen name="NewPayment" component={NewPaymentScreen} />
+          <Stack.Screen name="Numpad" component={NumpadScreen} />
+          <Stack.Screen name="PaymentMode" component={PaymentModeScreen} />
+          <Stack.Screen name="CancelPayment" component={CancelPaymentScreen} />
           <Stack.Screen name="PaymentLink" component={PaymentLinkScreen} />
           <Stack.Screen name="PaymentSuccess" component={PaymentSuccessScreen} />
           <Stack.Screen name="CustomerRegistration" component={CustomerRegistrationScreen} />

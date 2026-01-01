@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div
+      class="relative flex h-auto min-h-screen w-full flex-col bg-[#f8f8fc] justify-between group/design-root overflow-x-hidden"
+      style='font-family: Manrope, "Noto Sans", sans-serif;'
+    >
+      <div>
+        <div class="flex items-center bg-[#f8f8fc] p-4 pb-2 justify-between">
+          <div class="text-[#0c0e1d] flex size-12 shrink-0 items-center" data-icon="ArrowLeft" data-size="24px" data-weight="regular">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"></path>
+            </svg>
+          </div>
+          <h2 class="text-[#0c0e1d] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Ajustes</h2>
+        </div>
+        <h2 class="text-[#0c0e1d] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Configuración de Terminal</h2>
+        <div class="flex gap-4 bg-[#f8f8fc] px-4 py-3">
+          <div class="text-[#0c0e1d] flex items-center justify-center rounded-lg bg-[#e6e8f4] shrink-0 size-12" data-icon="DeviceTablet" data-size="24px" data-weight="regular">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+              <path
+                d="M192,24H64A24,24,0,0,0,40,48V208a24,24,0,0,0,24,24H192a24,24,0,0,0,24-24V48A24,24,0,0,0,192,24ZM56,72H200V184H56Zm8-32H192a8,8,0,0,1,8,8v8H56V48A8,8,0,0,1,64,40ZM192,216H64a8,8,0,0,1-8-8v-8H200v8A8,8,0,0,1,192,216Z"
+              ></path>
+            </svg>
+          </div>
+          <div class="flex flex-1 flex-col justify-center">
+            <p class="text-[#0c0e1d] text-base font-medium leading-normal">Terminal conectado</p>
+            <p class="text-[#4551a1] text-sm font-normal leading-normal">Jeturing CORE</p>
+            <p class="text-[#4551a1] text-sm font-normal leading-normal">ID: 1234567890 Estado: Conectado</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-[#f8f8fc] px-4 min-h-[72px] py-2">
+          <div class="text-[#0c0e1d] flex items-center justify-center rounded-lg bg-[#e6e8f4] shrink-0 size-12" data-icon="DeviceTablet" data-size="24px" data-weight="regular">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+              <path
+                d="M192,24H64A24,24,0,0,0,40,48V208a24,24,0,0,0,24,24H192a24,24,0,0,0,24-24V48A24,24,0,0,0,192,24ZM56,72H200V184H56Zm8-32H192a8,8,0,0,1,8,8v8H56V48A8,8,0,0,1,64,40ZM192,216H64a8,8,0,0,1-8-8v-8H200v8A8,8,0,0,1,192,216Z"
+              ></path>
+            </svg>
+          </div>
+          <div class="flex flex-col justify-center">
+            <p class="text-[#0c0e1d] text-base font-medium leading-normal line-clamp-1">Cambiar terminal</p>
+            <p class="text-[#4551a1] text-sm font-normal leading-normal line-clamp-2">Seleccionar un nuevo terminal</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="flex px-4 py-3">
+          <button
+            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 flex-1 bg-[#e6e8f4] text-[#0c0e1d] text-sm font-bold leading-normal tracking-[0.015em]"
+          >
+            <span class="truncate">Cerrar Sesión</span>
+          </button>
+        </div>
+        <div class="h-5 bg-[#f8f8fc]"></div>
+      </div>
+    </div>
+  </body>
+</html>

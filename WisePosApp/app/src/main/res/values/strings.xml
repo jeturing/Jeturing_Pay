@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jeturing Pay</string>
+    <string name="new_payment">Nuevo Cobro</string>
+    <string name="history">Historial</string>
+    <string name="settings">Configuración</string>
+    <string name="cancel">Cancelar</string>
+    <string name="confirm">Confirmar</string>
+    <string name="amount">Monto</string>
+    <string name="description">Descripción</string>
+    <string name="processing">Procesando...</string>
+    <string name="success">¡Pago exitoso!</string>
+    <string name="error">Error</string>
+    <string name="connected">Conectado</string>
+    <string name="disconnected">Desconectado</string>
+    <string name="insert_card">Inserte o acerque la tarjeta</string>
+    <string name="no_payments">No hay pagos recientes</string>
+    
+    <!-- New Payment Screen -->
+    <string name="nuevo_cobro">Nuevo Cobro (TPV de Inventario)</string>
+    <string name="back">Atrás</string>
+    <string name="search_product">Buscar producto...</string>
+    <string name="barcode_scanner">Escanear código de barras</string>
+    <string name="categories">Categorías</string>
+    <string name="selected_products">Productos seleccionados</string>
+    <string name="total">Total</string>
+    <string name="information">Información</string>
+    <string name="branch_selected">Sucursal seleccionada</string>
+    <string name="central_branch">Sucursal Central</string>
+    <string name="user">Usuario</string>
+    <string name="default_cashier">Cajero: Alex</string>
+    <string name="device_ready">Dispositivo listo para pagos con tarjeta/contactless</string>
+    <string name="charge_now">Cobrar ahora</string>
+    <string name="view_history">Ver historial</string>
+    <string name="delete">Eliminar</string>
+    <string name="all">Todas</string>
+    
+    <!-- Login Screen -->
+    <string name="username">Usuario</string>
+    <string name="username_hint">Ingrese su usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="password_hint">Ingrese su contraseña</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="support">Soporte</string>
+    
+    <!-- History Screen -->
+    <string name="payment_history">Historial de Cobros</string>
+    <string name="today">Hoy</string>
+    <string name="week">Semana</string>
+    
+    <!-- Tips Screen -->
+    <string name="tips">Propinas</string>
+    <string name="tip_amount">Monto total del cobro</string>
+    <string name="select_tip_option">Selecciona una opción de propina</string>
+    <string name="tip_15">Propina 15%</string>
+    <string name="tip_18">Propina 18%</string>
+    <string name="tip_20">Propina 20%</string>
+    
+    <!-- Payment Status -->
+    <string name="payment_status">Estado del Pago</string>
+    <string name="payment_processing">Procesando pago...</string>
+    <string name="please_wait">Por favor espere</string>
+    
+    <!-- Receipt Screen -->
+    <string name="receipt">Recibo</string>
+    <string name="send_email">Enviar por Correo</string>
+    <string name="done">Listo</string>
+    <string name="date">Fecha</string>
+    
+    <!-- Settings Screen -->
+    <string name="account">Cuenta</string>
+    <string name="terminal_settings">Configuración de Terminal</string>
+    <string name="app_preferences">Preferencias de la App</string>
+    <string name="about">Acerca De</string>
+    
+    <!-- Numpad Activity -->
+    <string name="amount_to_charge">Monto a cobrar</string>
+    <string name="continue_btn">Continuar</string>
+    
+    <!-- Onboarding Welcome -->
+    <string name="onboarding_welcome_title">Bienvenido a Jeturing Pay</string>
+    <string name="onboarding_welcome_description">Recibe pagos de forma segura y rápida desde tu dispositivo móvil</string>
+    <string name="onboarding_feature_1">✓ Pagos seguros con Stripe</string>
+    <string name="onboarding_feature_2">✓ Múltiples métodos de pago</string>
+    <string name="onboarding_feature_3">✓ Reportes en tiempo real</string>
+    <string name="comenzar">Comenzar</string>
+    <string name="aprender_mas">Aprender más</string>
+    
+    <!-- Onboarding Card -->
+    <string name="onboarding_card_title">Conecta tu medio de pago</string>
+    <string name="onboarding_card_description">Ingresa los datos de tu tarjeta de crédito o débito</string>
+    <string name="card_number_hint">1234 5678 9012 3456</string>
+    <string name="expiry_date_hint">MM/YY</string>
+    <string name="cvv_hint">123</string>
+    <string name="cardholder_name_hint">Nombre como aparece en la tarjeta</string>
+    <string name="save_card">Guardar para próximos pagos</string>
+    <string name="security_notice">🔒 Tus datos están protegidos por Stripe</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="atras">Atrás</string>
+    
+    <!-- Onboarding Currency -->
+    <string name="onboarding_currency_title">Selecciona tu moneda</string>
+    <string name="onboarding_currency_description">Elige la moneda en la que deseas recibir pagos</string>
+    <string name="currency_usd">Dólar Estadounidense</string>
+    <string name="currency_eur">Euro</string>
+    <string name="currency_mxn">Peso Mexicano</string>
+    <string name="currency_cop">Peso Colombiano</string>
+    <string name="currency_ars">Peso Argentino</string>
+    <string name="currency_brl">Real Brasileño</string>
+    <string name="currency_clp">Peso Chileno</string>
+    <string name="currency_pen">Sol Peruano</string>
+    
+    <!-- Onboarding Tap to Pay -->
+    <string name="onboarding_tapto_title">Configurar Tap to Pay</string>
+    <string name="onboarding_tapto_description">Habilita pagos contactless con NFC</string>
+    <string name="tapto_allows">Tap to Pay permite:</string>
+    <string name="tapto_feature_1">✓ Pagos contactless (NFC)</string>
+    <string name="tapto_feature_2">✓ Experiencia rápida y segura</string>
+    <string name="tapto_feature_3">✓ Compatible con dispositivos móviles</string>
+    <string name="enable_tapto">Habilitar Tap to Pay</string>
+    <string name="permissions_required">Permisos requeridos</string>
+    <string name="completar_onboarding">Completar Configuración</string>
+    <string name="paso_1_de_4">Paso 1 de 4</string>
+    <string name="paso_2_de_4">Paso 2 de 4</string>
+    <string name="paso_3_de_4">Paso 3 de 4</string>
+    <string name="paso_4_de_4">Paso 4 de 4</string>
+    
+    <!-- Payment Mode Activity -->
+    <string name="select_payment_mode">Selecciona modo de cobro</string>
+    <string name="manual_mode">Manual (Teclado Numérico)</string>
+    <string name="tap_to_pay_mode">Tap to Pay (NFC)</string>
+    <string name="qr_code_mode">Código QR</string>
+    <string name="payment_link_mode">Enlace de Pago</string>
+    <string name="cancel_btn">Cancelar</string>
+    
+    <!-- New Payment Activity -->
+    <string name="select_amount">Selecciona un monto</string>
+    <string name="quick_amounts">Montos Rápidos</string>
+    <string name="custom_amount">Monto Personalizado</string>
+    <string name="from_history">Desde Historial</string>
+    
+    <!-- Cancel Payment Activity -->
+    <string name="cancel_payment_confirm">¿Cancelar Pago?</string>
+    <string name="time">Hora</string>
+    <string name="transaction_id">ID Transacción</string>
+    <string name="cancel_warning">Si cancelas el pago, es posible que se cobre un monto parcial.</string>
+    <string name="yes_cancel">Sí, Cancelar Pago</string>
+    <string name="no_continue">No, Continuar</string>
+</resources>

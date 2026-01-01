@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Numpad para Captura de Monto</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4f46e5", // Indigo-600 as a placeholder primary color
+            "background-light": "#f8fafc", // slate-50
+            "background-dark": "#020617", // slate-950
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "1rem", // 16px
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    .numpad-key {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.875rem;line-height: 2.25rem;font-weight: 500;
+      color: #0f172a;cursor: pointer;
+      user-select: none;
+      border-radius: 9999px;aspect-ratio: 1 / 1;
+      transition: background-color 0.2s;
+    }
+    .dark .numpad-key {
+      color: #f8fafc;}
+    .numpad-key:active {
+      background-color: #e2e8f0;}
+    .dark .numpad-key:active {
+      background-color: #1e293b;}
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="h-screen w-full max-w-md mx-auto flex flex-col p-6">
+<header class="flex-shrink-0 pt-6 pb-12">
+<div class="flex items-center justify-center mb-8">
+<svg class="h-6 w-6 text-slate-400 dark:text-slate-600 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="font-semibold text-slate-500 dark:text-slate-400">Jeturing</span>
+</div>
+<div class="text-center">
+<span class="text-slate-600 dark:text-slate-400 text-lg">Monto a cobrar</span>
+<div class="flex items-center justify-center mt-2">
+<span class="text-3xl font-medium text-slate-500 dark:text-slate-500 mr-2">USD</span>
+<h1 class="text-7xl font-bold tracking-tight text-slate-900 dark:text-white">
+<span>123.45</span>
+</h1>
+</div>
+</div>
+</header>
+<main class="flex-grow grid grid-cols-3 gap-4 items-center justify-center">
+<div class="numpad-key">1</div>
+<div class="numpad-key">2</div>
+<div class="numpad-key">3</div>
+<div class="numpad-key">4</div>
+<div class="numpad-key">5</div>
+<div class="numpad-key">6</div>
+<div class="numpad-key">7</div>
+<div class="numpad-key">8</div>
+<div class="numpad-key">9</div>
+<div class="numpad-key text-xl">.</div>
+<div class="numpad-key">0</div>
+<div class="numpad-key flex items-center justify-center">
+<span class="material-icons-outlined text-3xl">backspace</span>
+</div>
+</main>
+<footer class="flex-shrink-0 pt-4 pb-6">
+<button class="w-full bg-primary text-white font-bold py-5 rounded-full text-lg shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all duration-200">
+        Continuar
+      </button>
+</footer>
+</div>
+
+</body></html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nuevo Cobro TPV</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0022ff",
+              "background-light": "#f5f6f8",
+              "background-dark": "#0f1223",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "1.25rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-gray-800 dark:text-gray-200 text-2xl">menu</span>
+</div>
+<h1 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Nuevo Cobro</h1>
+<div class="flex w-10 items-center justify-end">
+<img alt="Jeturing Logo" class="h-6 opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDqNFG43Rl96qHRq35_bPG28ZniE1rPkHiL0-QpWeGb2A9cxJpIsraVzY25CWX5QSfC9O6eAd1IZtPFeOiDbJuCB9wMb0R2WMDwWNoX9YYU-sXzp_nhwrgm8SoBgNLaB43br31KeMv90V6Jl90xrj9WFLx_IU4XIIQUYZkIUwWSQGOL6INcC_QP0AETFP4iPPHOfZpApVkpCjZeFNgufl5N8EqnGFRGTfrDU67QjpQGsW-IKOf95ADucWvp6yqkmP0rzUc5unUW18"/>
+</div>
+</header>
+<main class="flex-1 pb-28">
+<!-- Search Bar -->
+<div class="px-4 py-3">
+<label class="flex flex-col min-w-40 h-14 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full shadow-sm">
+<div class="text-gray-600 dark:text-gray-400 flex bg-white dark:bg-gray-800/50 items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden text-gray-900 dark:text-gray-100 focus:outline-0 focus:ring-0 border-none bg-white dark:bg-gray-800/50 h-full placeholder:text-gray-500 dark:placeholder:text-gray-400 px-4 pl-2 text-base font-normal leading-normal" placeholder="Buscar producto..." value=""/>
+<div class="text-white flex bg-primary items-center justify-center pr-4 pl-3 rounded-r-lg border-l-0 cursor-pointer">
+<span class="material-symbols-outlined">barcode_scanner</span>
+</div>
+</div>
+</label>
+</div>
+<!-- Chips -->
+<div class="flex gap-3 px-4 py-2 overflow-x-auto whitespace-nowrap scrollbar-hide">
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary text-white pl-5 pr-5 cursor-pointer">
+<p class="text-sm font-semibold leading-normal">Todos</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 dark:bg-primary/30 pl-5 pr-5 cursor-pointer">
+<p class="text-gray-800 dark:text-gray-200 text-sm font-medium leading-normal">Bebidas</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 dark:bg-primary/30 pl-5 pr-5 cursor-pointer">
+<p class="text-gray-800 dark:text-gray-200 text-sm font-medium leading-normal">Comida</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 dark:bg-primary/30 pl-5 pr-5 cursor-pointer">
+<p class="text-gray-800 dark:text-gray-200 text-sm font-medium leading-normal">Snacks</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 dark:bg-primary/30 pl-5 pr-5 cursor-pointer">
+<p class="text-gray-800 dark:text-gray-200 text-sm font-medium leading-normal">Mercancía</p>
+</div>
+</div>
+<!-- Image Grid -->
+<div class="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4 p-4">
+<div class="flex flex-col gap-2 relative">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl" data-alt="A cup of black Americano coffee on a saucer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDRj35A0nfV_V-XzyDN7Zk22tb-l6P0Ij0Tg1TgqbRxA14bOEeUSAglO_niZYeGzYZDFz6FtNQeZdrvUlFOtTwg4lfOLKMpiR51dMpBWoPbMsuhZMEf0GpS3GI58GNMBHi8pcbkwwOfp31lRikfakNJYSOLcQ8ZMY2cbmRXOCVf_Y5EUQ0qdd15WzZjUa2F_Ypz2pga8BrqCgpppR_9mwFU7X-BNNh8hY5OkiP2koTNg9QaKq89yHaJK8g5eyt5lN7wBav5Y0eNLn0");'></div>
+<button class="absolute top-2 right-2 flex items-center justify-center size-8 rounded-full bg-primary text-white shadow-md">
+<span class="material-symbols-outlined text-xl">add</span>
+</button>
+<div>
+<p class="text-gray-900 dark:text-white text-base font-semibold leading-normal">Café Americano</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">$2.50</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 relative">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl" data-alt="A golden brown croissant on a white plate" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAWdW7nd7PsXrrwIEl0S0l8Mbr3bc_nLlI3LDp4X5tX4ar9_rHO2kYhHHsaEiWt0ypdVILa07oR59vW-ldhBmWWQ5hLFd9i6gHnGwcoyBdX43RZwHKKISr71OU0sixjebaAmrQEFUNObrgCM_3rWYoEpRab8LKaVF4x4H8XYf7mbt0b6ykJFI40y3WoWqZEmOYd6xa28JahEBkc8K0jY9PXVb5JTrWrxD0w4bHFU9XyZ8NbppcOUUOSjTMIIMVW9viRhGAG7AbkyUI");'></div>
+<button class="absolute top-2 right-2 flex items-center justify-center size-8 rounded-full bg-primary text-white shadow-md">
+<span class="material-symbols-outlined text-xl">add</span>
+</button>
+<div>
+<p class="text-gray-900 dark:text-white text-base font-semibold leading-normal">Croissant</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">$3.00</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 relative">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl" data-alt="A glass of fresh orange juice with orange slices" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBrv91cyEbVfrYb1IalGrpy_sqY-TxhYH4FGnHu7lGqbLUmpbRdgPrGEDVqHsnvSjtwLzH390YsiPpkDN2P3iJrBjBdWtB7R4y8PzEbUvSO7iSqrWqmk09s5zDpSc3CzqYLBQnL25M-7JBR-yfwbcVWMzhtMuqmynW5vgBkJ3kMXmhGco-k2lEFD-LNl8_LpwRC7VttPrOVeUfxRatp3EkzrMzOhUROwmYwRFkbL7R_FO9bWrz-AeFvUnbPBnhCslQ6SpowRKvM9co");'></div>
+<button class="absolute top-2 right-2 flex items-center justify-center size-8 rounded-full bg-primary text-white shadow-md">
+<span class="material-symbols-outlined text-xl">add</span>
+</button>
+<div>
+<p class="text-gray-900 dark:text-white text-base font-semibold leading-normal">Jugo de Naranja</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">$4.00</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 relative">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl" data-alt="A slice of rich chocolate cake on a plate" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwKMhWDXW1yU809sKleNsSDZ4BiSGogwtozjYSRq79qv1O-bAAcpil86P40ETmNr5kLUcSf3_ffY72fcq6yjuOOpNB8F7F5FQIv966Fn1tT1eC0s8C7N5raN3oFekaNpv7awYr5ULGrzewLWXYMQZc7h5ai4UvCgL8AQGwy07WNLAva7n7NDdzrZEjnB6Yg4dCEUUJjtByjpJVFRlqAbvJeHm51jPJGdsyinpTME5-CH9JIb69ZYIRRwm9fk_eGQSUpVQFToq7s9Y");'></div>
+<button class="absolute top-2 right-2 flex items-center justify-center size-8 rounded-full bg-primary text-white shadow-md">
+<span class="material-symbols-outlined text-xl">add</span>
+</button>
+<div>
+<p class="text-gray-900 dark:text-white text-base font-semibold leading-normal">Torta de Chocolate</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">$5.50</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 relative">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl" data-alt="A clear bottle of mineral water with condensation" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCUUKM17nQVEVBvZxvl5eiMu7oV_11Wwi0SikubAfUT-F5yWasrYWqvrho8-BWhblyr97kfxy5LHSnEbSL513SUxKfaCpOqA-KrdQ88H3mMTDSDNlNwaO-7D65Qo81k8ObFf5CXhk1JYUmqsyCLwCykxssn0MyS7yC4GPJGyRwuMZXC1NQu_XAVk_uu0RZOsrwk4N2aiAYqBAMpHYO3AmQT-UFeQiyw0V5PGt4Oa6sv7R5dAcoDu9yiyRlNfXj3k7L9FcfZqtUj4wI");'></div>
+<button class="absolute top-2 right-2 flex items-center justify-center size-8 rounded-full bg-primary text-white shadow-md">
+<span class="material-symbols-outlined text-xl">add</span>
+</button>
+<div>
+<p class="text-gray-900 dark:text-white text-base font-semibold leading-normal">Agua Mineral</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">$1.50</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 relative">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl" data-alt="A turkey sandwich with lettuce and tomato" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBOXrUiQkAGWzI_Nt0LiirOVtqIAf3E6uFfR1CN7QCMsyT5jqyWW-Bi_yAXJ-pPfisQtbhuPLeY-DvyHpAedE_g21ITdKTgr1ME3Q_9s5237djZwlbWAJsFeJ8V41d5vm9QGcX1oLb58E9MRee9IgMUR6L61v8u3BJK1hnAeiLUHoK0FrB0oH2-4xwFqRgDL0evwhrI7mSGm9KcM6fqti-RtO77-T6-lXqINwKFuJp3dJ4En51JlufEaHkFPLS2EuQ2RdZnHpp44Rc");'></div>
+<button class="absolute top-2 right-2 flex items-center justify-center size-8 rounded-full bg-primary text-white shadow-md">
+<span class="material-symbols-outlined text-xl">add</span>
+</button>
+<div>
+<p class="text-gray-900 dark:text-white text-base font-semibold leading-normal">Sandwich de Pavo</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">$6.00</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Cart Summary Bar -->
+<footer class="fixed bottom-0 left-0 right-0 p-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-t border-gray-200 dark:border-gray-800">
+<div class="flex items-center gap-4 bg-white dark:bg-gray-800/50 p-3 rounded-lg shadow-lg justify-between">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/20 shrink-0 size-10">
+<span class="material-symbols-outlined">shopping_cart</span>
+</div>
+<div>
+<p class="text-gray-900 dark:text-white text-base font-semibold leading-normal flex-1 truncate">3 artículos</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-medium leading-tight">$11.50</p>
+</div>
+</div>
+<div class="shrink-0">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-6 bg-primary text-white text-base font-bold leading-normal w-fit shadow-md hover:opacity-90 transition-opacity">
+<span class="truncate">Cobrar ahora</span>
+</button>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

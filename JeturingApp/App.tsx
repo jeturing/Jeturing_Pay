@@ -15,6 +15,7 @@ import { StripeProvider } from '@stripe/stripe-react-native';
 import { StripeAccountProvider } from './src/contexts/StripeAccountContext';
 import { FeatureFlagsProvider } from './src/components/FeatureFlagsProvider';
 import AppNavigator from './src/navigation/AppNavigator';
+import { JeturingPayLogo } from './src/components/JeturingPayLogo';
 
 // Load from environment or use production key
 const STRIPE_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_STRIPE_PK || 'pk_live_jeturing';
@@ -22,6 +23,7 @@ const STRIPE_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_STRIPE_PK || 'pk_live_jet
 // Custom loading component for feature flags initialization
 const FeatureFlagsLoader = () => (
   <View style={styles.loaderContainer}>
+    <JeturingPayLogo size={120} />
     <Text style={styles.loaderText}>Cargando configuración...</Text>
   </View>
 );
@@ -52,10 +54,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f8f9fa',
+    backgroundColor: '#FFFFFF',
   },
   loaderText: {
     fontSize: 16,
-    color: '#6c757d',
+    color: '#697386',
+    marginTop: 24,
   },
 });

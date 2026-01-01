@@ -1,0 +1,104 @@
+# Jeturing Core - Render Blueprint Configuration
+# This file defines the infrastructure for Jeturing Pay backend services
+
+services:
+  # Main Backend API
+  - type: web
+    name: jeturing-api
+    env: python
+    plan: free  # Upgrade to paid plan for production
+    region: oregon  # Closest to target users
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    healthCheckPath: /health
+    
+    # Environment Variables
+    envVars:
+      # Stripe Configuration
+      - key: STRIPE_SECRET_KEY
+        sync: false  # Managed in Render Dashboard
+      
+      - key: STRIPE_PUBLISHABLE_KEY
+        sync: false
+      
+      - key: STRIPE_ACCOUNT_ID
+        value: acct_1G0K5CB1h7Ho0bBU
+      
+      # API Security
+      - key: API_KEY
+        sync: false  # Set to: *963.Abcd
+      
+      - key: ALLOWED_ORIGINS
+        value: https://jeturing.com,https://app.jeturing.com
+      
+      # Database (if needed)
+      - key: DATABASE_URL
+        fromDatabase:
+          name: jeturing-db
+          property: connectionString
+      
+      # Application Settings
+      - key: FLASK_ENV
+        value: production
+      
+      - key: LOG_LEVEL
+        value: INFO
+      
+      - key: PORT
+        value: 10000  # Render default port
+    
+    # Auto Deploy
+    autoDeploy: true
+    
+    # Build settings
+    buildFilter:
+      paths:
+        - backend/**
+        - requirements.txt
+        - Procfile
+    
+    # Scaling (upgrade to paid plan)
+    # numInstances: 2
+    # scaling:
+    #   minInstances: 1
+    #   maxInstances: 10
+    #   targetMemoryPercent: 70
+    #   targetCPUPercent: 70
+
+# Database (Optional - if you need persistent storage)
+databases:
+  - name: jeturing-db
+    databaseName: jeturing_prod
+    plan: free  # Upgrade to paid for production
+    region: oregon
+    user: jeturing_admin
+
+# Background Workers (Optional - for async tasks)
+# - type: worker
+#   name: jeturing-worker
+#   env: python
+#   buildCommand: pip install -r requirements.txt
+#   startCommand: celery -A app.celery worker --loglevel=info
+#   envVarsFrom:
+#     - service: jeturing-api
+
+# Cron Jobs (Optional - for scheduled tasks)
+# - type: cron
+#   name: daily-reports
+#   env: python
+#   schedule: "0 0 * * *"  # Every day at midnight
+#   buildCommand: pip install -r requirements.txt
+#   startCommand: python scripts/daily_reports.py
+#   envVarsFrom:
+#     - service: jeturing-api
+
+# Static Site (Optional - for documentation/landing page)
+# - type: web
+#   name: jeturing-docs
+#   env: static
+#   buildCommand: npm run build
+#   staticPublishPath: ./build
+#   routes:
+#     - type: rewrite
+#       source: /*
+#       destination: /index.html

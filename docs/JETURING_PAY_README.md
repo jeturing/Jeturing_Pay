@@ -1,182 +1,294 @@
-# Jeturing Pay - Stripe Terminal Android App
+# Jeturing Pay
 
-This is a customized version of the Stripe Terminal Android SDK example app, specifically configured for Jeturing Pay with support for Stripe Connected Accounts and simplified payment flows.
+<div align="center">
 
-## Features
+**Plataforma completa de pagos empresarial con Stripe Terminal**
 
-### 1. **Jeturing Pay Branding**
-- App name: "Jeturing Pay"
-- Customized UI and strings for Jeturing branding
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)]()
+[![Platform](https://img.shields.io/badge/platform-Android%20%7C%20iOS%20%7C%20Web-lightgrey.svg)]()
 
-### 2. **User Registration**
-- New user registration flow with form validation
-- Collects: Full Name, Email, Phone Number, and Business Name
-- Automatically creates and stores Stripe Connected Account ID
-- Registration accessible from the main Terminal screen
+Sistema multi-canal para procesamiento de pagos en dispositivos físicos, móviles y web
 
-### 3. **Stripe Connected Accounts Support**
-- All API calls now support Stripe Connected Accounts via `Stripe-Account` header
-- Connected account ID is stored after registration and used for all subsequent operations
-- Backend service methods updated to include account context
+</div>
 
-### 4. **Simplified Payment Flow**
-- Quick payment interface with preset amounts ($5, $10, $20, $50, $100)
-- Custom amount input option
-- Removes advanced options (extended auth, incremental auth) for streamlined checkout
-- One-tap payment processing
-- Accessible from the Connected Reader screen
+---
 
-## Implementation Details
+## 🚀 Inicio Rápido
 
-### New Files Created
+### Para empezar inmediatamente:
+1. 📖 Lee el [Resumen Ejecutivo](./DEPLOYMENT_READY.md)
+2. 📱 Instala en WisePOS E siguiendo [estas instrucciones](./INSTALL_INSTRUCTIONS.md)
+3. 🎨 Revisa la [Guía de Branding](./docs/BRANDING_GUIDE.md)
+4. 📚 Consulta la [Guía Maestra del Proyecto](./PROJECT_MASTER_GUIDE.md)
 
-1. **Models**
-   - `User.kt` - User data model for registration
-   - `RegistrationResponse.kt` - Response model from registration endpoint
+### APK Listo para Instalar
+📦 **jeturing-pay-wisepos-v1.0.0.apk** (17 MB)
+- Ubicación: `/Users/owner/Desktop/`
+- Instalación: `adb install -r jeturing-pay-wisepos-v1.0.0.apk`
 
-2. **Fragments**
-   - `RegistrationFragment.kt` - User registration screen
-   - `SimplePaymentFragment.kt` - Simplified payment interface
+---
 
-3. **Layouts**
-   - `fragment_registration.xml` - Registration form layout
-   - `fragment_simple_payment.xml` - Simple payment interface layout
+## 📱 Aplicaciones
 
-### Modified Files
+### WisePosApp (Android Nativo)
+App que corre **dentro** del terminal WisePOS E
 
-1. **Network Layer**
-   - `BackendService.kt` - Added registration endpoint and connected account headers
-   - `ApiClient.kt` - Added user registration method and connected account ID storage
-   
-2. **Navigation**
-   - `NavigationListener.kt` - Added registration and simple payment navigation methods
-   - `MainActivity.kt` - Implemented new navigation handlers
-
-3. **UI**
-   - `strings.xml` - Updated app name and added Jeturing Pay specific strings
-   - `fragment_terminal.xml` - Added registration button
-   - `fragment_connected_reader.xml` - Added simple payment button
-   - `TerminalFragment.kt` - Added registration button handler
-   - `ConnectedReaderFragment.kt` - Added simple payment button handler
-
-4. **Configuration**
-   - `gradle.properties` - Set backend URL to `https://api.jeturing.com`
-
-## Backend Requirements
-
-The backend must support the following endpoints:
-
-### 1. Registration Endpoint
-```
-POST /register_user
-Content-Type: application/x-www-form-urlencoded
-
-Parameters:
-- full_name: String
-- email: String
-- phone: String
-- business_name: String
-
-Response:
-{
-  "success": true,
-  "message": "Registration successful",
-  "userId": "user_xxx",
-  "stripeAccountId": "acct_xxx"
-}
+```bash
+cd WisePosApp
+./gradlew assembleDebug
 ```
 
-### 2. Connection Token with Connected Account
+**Características**:
+- ✅ Procesamiento de pagos NFC/Chip/Banda
+- ✅ Animaciones Lottie
+- ✅ Logo corporativo
+- ✅ Historial de transacciones
+
+[📖 Ver documentación completa →](./WisePosApp/README.md)
+
+---
+
+### JeturingApp (React Native)
+App móvil multi-plataforma para iOS y Android
+
+```bash
+cd JeturingApp
+npm install
+npm run android
 ```
-POST /connection_token
-Headers:
-  Stripe-Account: acct_xxx
 
-Response:
-{
-  "secret": "pst_xxx"
-}
+**Características**:
+- ✅ Tap to Pay on iPhone
+- ✅ Autenticación biométrica
+- ✅ Gestión de clientes
+- ✅ Feature flags
+
+[📖 Ver documentación completa →](./JeturingApp/)
+
+---
+
+### Stripe App (Dashboard Extension)
+Extensión del Dashboard de Stripe
+
+```bash
+cd stripe-app
+stripe apps upload
 ```
 
-### 3. Other Endpoints
-All existing endpoints should support the `Stripe-Account` header:
-- `/create_location`
-- `/capture_payment_intent`
-- `/cancel_payment_intent`
+**Características**:
+- ✅ Gestión de terminales
+- ✅ Vista de transacciones
+- ✅ Configuración de dispositivos
 
-## Configuration
+[📖 Ver documentación completa →](./stripe-app/)
 
-1. **Backend URL**: Update `EXAMPLE_BACKEND_URL` in `gradle.properties` to point to your Jeturing backend
-   ```properties
-   EXAMPLE_BACKEND_URL="https://api.jeturing.com"
-   ```
+---
 
-2. **Build the app**:
-   ```bash
-   cd Example
-   ./gradlew :kotlinapp:assembleDebug
-   ```
+## 🏗️ Backend API
 
-3. **Install on device**:
-   ```bash
-   adb install kotlinapp/build/outputs/apk/debug/kotlinapp-debug.apk
-   ```
+**URL**: `https://api-001.sajet.us`
+**API Key**: `*963.Abcd`
 
-## User Flow
+### Endpoints principales:
+```bash
+# Connection Token
+POST /stripe/terminal/connection_token
 
-### First Time User
-1. Launch app → See Terminal screen
-2. Tap "Register" button
-3. Fill in registration form (name, email, phone, business name)
-4. Tap "Register" → Account created with Stripe Connected Account
-5. Automatically navigated to reader discovery/connection
+# Payment Intent
+POST /stripe/payment_intents
+POST /stripe/payment_intents/{id}/capture
 
-### Existing User
-1. Launch app → Terminal screen
-2. Connect to reader via "Discover Readers"
-3. Once connected, tap "Simple Checkout" for quick payments
+# History
+GET /stripe/payments
+```
 
-### Making a Payment
-1. From Connected Reader screen, tap "Simple Checkout"
-2. Select preset amount or enter custom amount
-3. Tap "Collect Payment"
-4. Follow on-screen prompts to complete payment
-5. Payment processed with connected account context
+[📖 Ver guía del backend →](./BACKEND_GUIDE.md)
 
-## Key Differences from Standard Stripe Terminal App
+---
 
-| Feature | Standard App | Jeturing Pay |
-|---------|-------------|--------------|
-| Branding | "Terminal" | "Jeturing Pay" |
-| Account Type | Direct | Connected Accounts |
-| Registration | Not available | Required for new users |
-| Payment Flow | Advanced options | Simplified with presets |
-| Backend Headers | None | Stripe-Account header |
+## 🎨 Branding
 
-## Security Notes
+### Logo Jeturing Pay
+Círculo + Tarjeta + Flecha = Pago completo
 
-- All sensitive operations use HTTPS
-- Connected account ID is stored in memory only
-- No credentials stored locally
-- Backend must validate all account operations
-- Follow Stripe's Connected Account security best practices
+**Colores**:
+- 🟢 Verde Azulado: `#00A896`
+- 🔵 Azul Profundo: `#0080A8`
+- 🟡 Dorado: `#FFD700`
+- 🔷 Stripe Blue: `#6772E5`
 
-## Testing
+[📖 Ver guía completa de branding →](./docs/BRANDING_GUIDE.md)
 
-To test the app:
+---
 
-1. **With Simulated Reader**: Use the built-in simulator (no physical hardware needed)
-2. **With Physical Reader**: Enable Bluetooth and pair with a Stripe reader
-3. **With Backend**: Deploy a backend that implements the required endpoints
+## 🔧 Configuración
 
-## Support
+### Render Blueprint
+- **Nombre**: Jeturing_Core
+- **Branch**: master
+- **Auto Sync**: ✅ Activado
+- **Dashboard**: [Ver Blueprint](https://dashboard.render.com/blueprint/exs-d54elb8gjchc73fqqhsg)
 
-For issues or questions about:
-- Stripe Terminal SDK: [Stripe Terminal Docs](https://stripe.com/docs/terminal/sdk/android)
-- Stripe Connected Accounts: [Connected Accounts Docs](https://stripe.com/docs/connect)
-- Jeturing Pay specific features: Contact Jeturing support
+[📖 Ver configuración de Render →](./RENDER_BLUEPRINT.md)
 
-## License
+---
 
-This app is based on the Stripe Terminal Android SDK example, which is proprietary to Stripe.
-Jeturing Pay customizations are copyright Jeturing.
+### Stripe
+- **Account**: `acct_1G0K5CB1h7Ho0bBU` (JETURING, Inc.)
+- **WisePOS E**: Demo_Mpos (192.168.2.225)
+- **Dashboard**: [Ver Terminal](https://dashboard.stripe.com/terminal/readers/tmr_Demo_Mpos)
+
+---
+
+## 📊 Arquitectura
+
+```
+┌──────────────────────────────────┐
+│        Jeturing Pay              │
+│   (Multi-channel Payment)        │
+└───────┬─────────┬────────┬──────┘
+        │         │        │
+   ┌────▼───┐ ┌──▼───┐ ┌─▼────┐
+   │WisePosE│ │Mobile│ │Stripe│
+   │  App   │ │  App │ │ App  │
+   └────┬───┘ └──┬───┘ └─┬────┘
+        │        │       │
+        └────────┼───────┘
+                 │
+            ┌────▼────┐
+            │ Backend │
+            │   API   │
+            └────┬────┘
+                 │
+          ┌──────┼──────┐
+          │      │      │
+       ┌──▼─┐ ┌─▼──┐ ┌─▼──┐
+       │Stripe│DB│ │Render│
+       └─────┘ └───┘ └────┘
+```
+
+---
+
+## 📚 Documentación Completa
+
+| Documento | Descripción |
+|-----------|-------------|
+| [PROJECT_MASTER_GUIDE.md](./PROJECT_MASTER_GUIDE.md) | 🎯 Guía maestra completa |
+| [DEPLOYMENT_READY.md](./DEPLOYMENT_READY.md) | ✅ Resumen ejecutivo |
+| [INSTALL_INSTRUCTIONS.md](./INSTALL_INSTRUCTIONS.md) | 📦 Cómo instalar |
+| [LOGO_UPDATE_SUMMARY.md](./LOGO_UPDATE_SUMMARY.md) | 🎨 Cambios de logo |
+| [RENDER_BLUEPRINT.md](./RENDER_BLUEPRINT.md) | 🏗️ Configuración Render |
+| [docs/BRANDING_GUIDE.md](./docs/BRANDING_GUIDE.md) | 🎨 Guía de branding |
+| [WisePosApp/README.md](./WisePosApp/README.md) | 📱 App Android |
+
+---
+
+## 🚀 Deploy
+
+### WisePosApp
+```bash
+cd WisePosApp
+./gradlew clean assembleDebug
+adb connect 192.168.2.225
+adb install -r app/build/outputs/apk/debug/app-debug.apk
+```
+
+### Backend (Auto-deploy)
+```bash
+git add .
+git commit -m "feat: nueva funcionalidad"
+git push origin master
+# Render despliega automáticamente
+```
+
+---
+
+## 🧪 Testing
+
+```bash
+# WisePosApp
+cd WisePosApp && ./gradlew test
+
+# JeturingApp
+cd JeturingApp && npm test
+
+# Backend
+pytest  # o npm test
+```
+
+---
+
+## 📊 Estado del Proyecto
+
+| Componente | Estado | Versión |
+|------------|--------|---------|
+| WisePosApp | ✅ Listo | v1.0.0 |
+| JeturingApp | ✅ Funcional | v1.0.0 |
+| Stripe App | ✅ Deployado | v1.0.0 |
+| Backend API | ✅ Activo | - |
+| Documentación | ✅ Completa | - |
+
+---
+
+## 🐛 Troubleshooting
+
+### Error: No conecta al backend
+```bash
+curl -H "x-api-key: *963.Abcd" https://api-001.sajet.us/health
+```
+
+### Error: Terminal no inicializa
+Verificar en [Stripe Dashboard](https://dashboard.stripe.com/terminal/readers/tmr_Demo_Mpos)
+
+### Error: Deploy falla
+Ver logs en [Render Dashboard](https://dashboard.render.com/blueprint/exs-d54elb8gjchc73fqqhsg)
+
+---
+
+## 📞 Soporte
+
+### Contacto
+- **Email**: jcarvajal@jeturing.com
+- **Render**: [Dashboard](https://dashboard.render.com/blueprint/exs-d54elb8gjchc73fqqhsg)
+- **Stripe**: [Terminal Dashboard](https://dashboard.stripe.com/terminal)
+
+### Recursos
+- [Stripe Terminal Docs](https://stripe.com/docs/terminal)
+- [Render Docs](https://render.com/docs)
+- [React Native Docs](https://reactnative.dev)
+
+---
+
+## 📄 Licencia
+
+**Copyright © 2025 Jeturing, Inc.**
+
+Este software es propietario y confidencial.
+
+---
+
+## 🎯 Próximos Pasos
+
+1. ✅ Logo aplicado globalmente
+2. ✅ APK compilado y listo
+3. ✅ Backend configurado en Render
+4. ⏳ **Instalar en WisePOS E** ← Estás aquí
+5. ⏳ Testing en producción
+6. ⏳ Lanzamiento oficial
+
+---
+
+<div align="center">
+
+**¿Listo para instalar?**
+
+[📦 Ver instrucciones de instalación →](./INSTALL_INSTRUCTIONS.md)
+
+---
+
+*Última actualización: 1 de enero de 2025*
+
+**Proyecto completado y documentado** ✨
+
+</div>

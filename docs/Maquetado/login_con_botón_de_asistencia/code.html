@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#2DD47F",
+            "background-light": "#FDFDFC",
+            "background-dark": "#121212",
+          },
+          fontFamily: {
+            display: ["Roboto", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "1.5rem",
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex flex-col h-screen">
+<div class="flex-grow flex flex-col items-center justify-center p-6">
+<header class="w-full text-center mb-10">
+<h1 class="text-2xl font-semibold text-gray-900 dark:text-white">Jeturing POS</h1>
+</header>
+<main class="w-full max-w-sm">
+<form class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-2" for="username">Usuario</label>
+<input class="w-full py-3 px-4 bg-gray-100 dark:bg-gray-800 border-0 rounded-full text-gray-500 dark:text-gray-400 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-primary/50" id="username" name="username" placeholder="Ingresa tu usuario" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-2" for="password">Contraseña</label>
+<div class="relative">
+<input class="w-full py-3 px-4 bg-gray-100 dark:bg-gray-800 border-0 rounded-full text-gray-500 dark:text-gray-400 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-primary/50" id="password" name="password" placeholder="Ingresa tu contraseña" type="password"/>
+<button class="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400 dark:text-gray-500" type="button">
+<span class="material-symbols-outlined">visibility_off</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<button aria-checked="false" class="bg-gray-200 dark:bg-gray-700 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" role="switch" type="button">
+<span class="sr-only">Recordarme</span>
+<span aria-hidden="true" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white dark:bg-gray-300 shadow ring-0 transition duration-200 ease-in-out translate-x-0"></span>
+</button>
+<label class="ml-2 text-sm text-gray-700 dark:text-gray-300">Recordarme</label>
+</div>
+<a class="text-sm text-primary/80 hover:text-primary underline" href="#">Olvidé mi contraseña</a>
+</div>
+<div class="pt-4 space-y-4">
+<button class="w-full bg-primary text-white font-bold py-4 px-4 rounded-full text-base hover:opacity-90 transition-opacity duration-200" type="submit">
+              Iniciar sesión con Jeturing
+            </button>
+<button class="w-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-bold py-4 px-4 rounded-full text-base hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200" type="button">
+              Registrar Asistencia
+            </button>
+</div>
+</form>
+</main>
+</div>
+<footer class="w-full text-center pb-8">
+<p class="text-sm text-gray-500 dark:text-gray-400">Powered by Jeturing</p>
+</footer>
+</div>
+
+</body></html>

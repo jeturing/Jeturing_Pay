@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Splash / Carga inicial, variant 2 of 3</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2bee79",
+              "background-light": "#f6f8f7",
+              "background-dark": "#102217",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-[100svh] w-full flex-col items-center justify-between p-6">
+<!-- Top Spacer -->
+<div class="w-full flex-shrink-0"></div>
+<!-- Main Content: Centered -->
+<div class="flex w-full flex-col items-center justify-center gap-6">
+<div class="flex h-32 w-32 items-center justify-center rounded-xl bg-white/10 p-4">
+<span class="material-symbols-outlined text-7xl text-white">storefront</span>
+</div>
+<p class="text-white/80 text-base font-normal leading-normal text-center">Verificando sesión / Conectando con Jeturing CORE</p>
+<div class="w-full max-w-xs px-4">
+<div class="rounded-full bg-primary/20">
+<div class="h-2 rounded-full bg-primary" style="width: 35%;"></div>
+</div>
+</div>
+</div>
+<!-- Bottom Content -->
+<div class="flex w-full flex-col items-center justify-end gap-2 pb-4">
+<p class="text-xs text-white/50">Powered by</p>
+<svg aria-labelledby="jeturing-logo" class="h-6 w-auto text-white/80" fill="currentColor" role="img" viewbox="0 0 114 26" xmlns="http://www.w3.org/2000/svg">
+<title id="jeturing-logo">Jeturing Logo</title>
+<path d="M11.6429 25.1333C10.7429 25.1333 9.9 24.9467 9.11429 24.5733C8.32857 24.2 7.65714 23.68 7.1 23.0133C6.54286 22.3467 6.14286 21.5733 5.9 20.7C5.65714 19.8267 5.53571 18.88 5.53571 17.8667V8.06667H0V1.8H5.53571V0H12.4286V1.8H17.9643V8.06667H12.4286V17.4C12.4286 18.4133 12.6071 19.1467 12.9643 19.6C13.3214 20.0533 13.8357 20.28 14.5071 20.28H17.9643V25.1333H11.6429ZM32.4 25.1333H25.4V0.866667H32.4V25.1333ZM28.9 2.93333C28.3 2.93333 27.8143 2.76 27.4429 2.41333C27.0714 2.06667 26.8857 1.63333 26.8857 1.11333C26.8857 0.593333 27.0714 0.16 27.4429 -0.186667C27.8143 -0.533333 28.3 -0.706667 28.9 -0.706667C29.5 -0.706667 29.9857 -0.533333 30.3571 -0.186667C30.7286 0.16 30.9143 0.593333 30.9143 1.11333C30.9143 1.63333 30.7286 2.06667 30.3571 2.41333C29.9857 2.76 29.5 2.93333 28.9 2.93333ZM51.325 25.1333H44.625L38.45 15.2V25.1333H31.55V0.866667H38.45L44.625 10.7333V0.866667H51.325V25.1333ZM68.3278 25.1333H61.3278V8.06667H56.5278V1.8H73.1278V8.06667H68.3278V25.1333ZM84.7571 25.8C81.8571 25.8 79.4357 25.1267 77.4929 23.78C75.55 22.4333 74.2 20.6 73.4429 18.28L79.4571 16.3333C79.8571 17.6133 80.5714 18.5733 81.6 19.2133C82.6286 19.8533 83.7571 20.1733 84.9857 20.1733C86.4143 20.1733 87.4857 19.8 88.2 19.0533C88.9143 18.3067 89.2714 17.28 89.2714 15.9733V14.1333C88.3714 14.8267 87.2857 15.3467 86.0143 15.7C84.7429 16.0533 83.4 16.2267 81.9857 16.2267C79.9 16.2267 78.1143 15.74 76.6286 14.7667C75.1429 13.7933 74.0571 12.4267 73.3714 10.6667C72.6857 8.90667 72.3429 6.94667 72.3429 4.78667C72.3429 3.33333 72.5857 2.05333 73.0714 0.946667L79.7571 2.46667C79.4571 3.2 79.3071 4.02667 79.3071 4.94667C79.3071 6.54667 79.6786 7.82667 80.4214 8.78667C81.1643 9.74667 82.1643 10.2267 83.4214 10.2267C84.45 10.2267 85.3571 9.99333 86.1429 9.52667C86.9286 9.06 87.5286 8.38667 87.9429 7.50667C88.3571 6.62667 88.5643 5.62667 88.5643 4.50667C88.5643 3.6 88.4071 2.76667 88.0929 2L94.5571 0C95.2143 1.84 95.5429 3.84667 95.5429 6.02C95.5429 8.74667 94.9571 11.08 93.7857 13.02C92.6143 14.96 91.0286 16.48 89.0286 17.58C87.0286 18.68 84.7714 19.2267 82.2571 19.2267C80.8857 19.2267 79.6286 19.04 78.4857 18.6667L75.3571 25.1333H84.7571L84.7571 25.8ZM102.329 25.1333C100.957 25.1333 99.7286 24.8933 98.6429 24.4133C97.5571 23.9333 96.6857 23.2333 96.0286 22.3133C95.3714 21.3933 94.9571 20.32 94.7857 19.0933L101.357 17.64C101.529 18.4267 101.914 19.04 102.514 19.48C103.114 19.92 103.829 20.14 104.657 20.14C105.7 20.14 106.529 19.86 107.143 19.3C107.757 18.74 108.064 17.96 108.064 16.96V8.06667H95.4286V1.8H113.829V17.2C113.829 19.0133 113.336 20.5733 112.35 21.88C111.364 23.1867 110.029 24.16 108.343 24.8C106.657 25.44 104.729 25.76 102.557 25.76L102.329 25.1333Z"></path>
+</svg>
+</div>
+</div>
+</body></html>

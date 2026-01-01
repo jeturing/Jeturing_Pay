@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding - Monedas</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#635BFF",
+              "background-light": "#F7F7FD",
+              "background-dark": "#121212",
+              "card-light": "#FFFFFF",
+              "card-dark": "#1E1E1E",
+              "text-primary-light": "#1C1C1E",
+              "text-primary-dark": "#EFEFEF",
+              "text-secondary-light": "#6B7280",
+              "text-secondary-dark": "#9CA3AF",
+              "border-light": "#E5E7EB",
+              "border-dark": "#374151"
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex flex-col h-screen">
+<header class="p-6 text-right">
+<a class="text-primary font-medium text-lg" href="#">Omitir</a>
+</header>
+<main class="flex-grow flex flex-col items-center px-4 -mt-8">
+<div class="relative w-full max-w-sm h-[400px]">
+<div class="absolute inset-0 bg-gradient-to-br from-purple-200 via-indigo-200 to-blue-200 dark:from-purple-900 dark:via-indigo-900 dark:to-blue-900 rounded-3xl opacity-50 blur-2xl"></div>
+<div class="absolute inset-x-0 top-1/2 -translate-y-1/2 w-full px-4">
+<div class="bg-card-light dark:bg-card-dark rounded-3xl shadow-lg p-6 mx-auto w-full max-w-xs">
+<h2 class="text-center font-semibold text-xl text-text-primary-light dark:text-text-primary-dark mb-6">Elige la moneda</h2>
+<div class="relative mb-4">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary-light dark:text-text-secondary-dark">search</span>
+<input class="w-full pl-10 pr-4 py-3 bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark rounded-xl text-text-primary-light dark:text-text-primary-dark focus:ring-primary focus:border-primary placeholder:text-text-secondary-light dark:placeholder:text-text-secondary-dark" placeholder="Buscar moneda" type="text"/>
+</div>
+<ul class="space-y-4 text-text-primary-light dark:text-text-primary-dark">
+<li class="flex items-center space-x-3">
+<img alt="Bandera de Afganistán" class="w-6 h-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOkmDC6GNqlllnPVqJb1st3dR2mFF0qabmvviPS4NnfEEX-YPbawvWs0y6BNqWo2W_sLeOWPp-8g1jR7Jk3Ot_zoFJTq0vBMmb9P-miiVX7fdPizxSbrRyQmwWESNTyuqvnYbR87O3WSZnUjZytNj3pNpQMg5vwUVg4chFq9WG5clsivj_bjCGYj6H5-L30YvuuDCvBpyYlP0R2_b0Hrnbs_6cAfMIhpNRoybCtXp1zwjulVVWnLwaVhxpyKAdV2Tq_d3NkW8Md1I"/>
+<span class="font-medium">AFN</span>
+</li>
+<li class="flex items-center space-x-3">
+<img alt="Bandera de Albania" class="w-6 h-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAujCwnAnK4T7Qc7IeGO5l1I2DQTyOqwzg6XkYlbKL4HoRGlaPYuwxDyJG1UjBLOi8nOJUWelulWTq8D47OPVKKEC71jF-e5qCk89ChfOwRDtV0FURBOO09wJCe1DMRHYBXqit0BtBvrRQKIzv96wKGjMo3KODJb8OTLUW3oevVsotFUSR1Dk3ho27Cx6qW5r2lPClX7QUVrYnK8lAPtTVW1h8ivRDdeYbjmBNtE3Ct9IUl1LGmL0TfOTO61KDokdvm1nTixhe4Sh0"/>
+<span class="font-medium">ALL</span>
+</li>
+<li class="flex items-center space-x-3">
+<img alt="Bandera de Argelia" class="w-6 h-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDykcItRrDIVFvYhFR0wIg3C4F-7DqeWkJiCOEXIbAYz_35W4zTRADHaTI0c_PSwAioc_wastuu7BIUFpBlG7pw8qg_1s_kfxwqkZBPpaIUxM707jEP3MYFoRFK0QeHpqXxKUiWQphgWqhudYEkWVzIPTDHyYmfx0ooTI9iwHgb2c0rSdtfGAftleQ1juBUBmCy6ohyeYJoQojMaRLKuADiRbERa46DfszteSmNJgX1T73BLytYbc4aM9PzJHSWA-Q9bmZ_NNPRijY"/>
+<span class="font-medium">DZD</span>
+</li>
+<li class="flex items-center space-x-3">
+<img alt="Bandera de Andorra" class="w-6 h-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt3aOXZ6eRtMVu6oSK2puQQu_B_v_cEtON0vmidz7pKD3JxCGA_cyaQD9-ANxV5auz17RGZ3oyTkJuQVaTdGq_M_ZoypMJBQ_jGoSSVyLXH3Fng2bEPIfL1PG_AHNQEdDPJaUxxtSvdWYht9EDzW9Io9NPhV_bTw9h-c23Rn7WWHnPXYJLb4jbOS1C6M_tlHgbafFluegR3vtIFJIRiPzQdZUrTMLTXicf1Xkv0cMoW8GvdiRzaVFNFuIlpSGRZjxKYufNsfaYing"/>
+<span class="font-medium">EUR</span>
+</li>
+<li class="flex items-center space-x-3">
+<img alt="Bandera de Angola" class="w-6 h-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALpcpPqN8OkPtjM04DjydarxVOIv1Xymna-XjbsAP5lFcUZiRwR-kDQu_Zj8U6J3PTTNS_Qrxkw-ypbDYRtFAhrjuFJDOFPmkm9oW2i_qi1OwoqOmYDYP8RknsbVa2HdMPW0DBQpFH5j4kDYjggHXuIxEWQx__CxFD3tZKo3m2o-QwjvKsS-TQ37ykvgI1OOKUo3YiBdqWjBhcH_uQD80Xw9tTLj4INugqp75IN2zJajp0WIpO50pbET3kmNwYVxj25UK432fbe0U"/>
+<span class="font-medium">AOA</span>
+</li>
+<li class="flex items-center space-x-3">
+<img alt="Bandera de Argentina" class="w-6 h-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByWuamGPNIaTG9k5Z7BOIXDVsNfYINGzeZ585W5lTVnAOO3hhbQID4SxAgWzlCEb4-88Ks4pLExQNm2VNUva8eFIzRlon6UjFN3nIszO9VRINrCjB6cb5GwxlHcy6dfSwKYxtJk-FovAXAYZM3AlM2dp1viGgxe_5TPtXgs9gPTTHJAlOpYtL57z_T9xi5k-Ysdx7Ocv2Hyt6ArezLGd2327r-tGpcPpE4InGKy8KlmeEN3nLZyBbLYcXGYUsRensG63mE7DOp9S4"/>
+<span class="font-medium">ARS</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="w-full max-w-sm text-center px-4 mt-8">
+<h1 class="text-3xl font-bold text-text-primary-light dark:text-text-primary-dark">Múltiples Monedas</h1>
+<p class="mt-4 text-base text-text-secondary-light dark:text-text-secondary-dark">Cobra a tus clientes en su moneda local y recibe fondos en tu moneda preferida.</p>
+</div>
+</main>
+<footer class="w-full px-6 pb-8 pt-4">
+<div class="w-full max-w-sm mx-auto">
+<div class="flex justify-between items-center mb-6">
+<div class="flex space-x-2">
+<span class="block h-2 w-2 rounded-full bg-border-light dark:bg-border-dark"></span>
+<span class="block h-2 w-2 rounded-full bg-border-light dark:bg-border-dark"></span>
+<span class="block h-2 w-2 rounded-full bg-border-light dark:bg-border-dark"></span>
+<span class="block h-2 w-4 rounded-full bg-text-primary-light dark:bg-text-primary-dark"></span>
+</div>
+<button class="bg-text-primary-light dark:bg-text-primary-dark text-card-light dark:text-card-dark w-14 h-14 rounded-full flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-3xl">arrow_forward</span>
+</button>
+</div>
+<a class="w-full block bg-primary text-white text-center font-semibold py-4 px-6 rounded-2xl shadow-md hover:opacity-90 transition-opacity" href="#">
+                    Iniciar Sesión
+                </a>
+</div>
+</footer>
+</div>
+
+</body></html>

@@ -1,0 +1,75 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+    
+    <!-- Círculo de fondo con gradiente -->
+    <path
+        android:pathData="M100,20 A80,80 0 1,1 100,180 A80,80 0 1,1 100,20 Z"
+        android:strokeWidth="8"
+        android:strokeColor="#00A896"
+        android:fillColor="#00000000"/>
+    
+    <!-- Línea decorativa superior -->
+    <path
+        android:pathData="M65,40 Q70,35 85,50"
+        android:strokeWidth="6"
+        android:strokeColor="#00A896"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"/>
+    
+    <!-- Ícono de tarjeta de crédito -->
+    <group
+        android:translateX="70"
+        android:translateY="85">
+        
+        <!-- Rectángulo de la tarjeta -->
+        <path
+            android:pathData="M0,0 L60,0 Q65,0 65,5 L65,30 Q65,35 60,35 L0,35 Q-5,35 -5,30 L-5,5 Q-5,0 0,0 Z"
+            android:fillColor="#E8F5F3"
+            android:strokeWidth="2"
+            android:strokeColor="#0080A8"/>
+        
+        <!-- Banda magnética -->
+        <path
+            android:pathData="M-5,10 L65,10 L65,18 L-5,18 Z"
+            android:fillColor="#0080A8"/>
+        
+        <!-- Chip -->
+        <path
+            android:pathData="M5,22 L18,22 L18,30 L5,30 Z"
+            android:fillColor="#FFD700"
+            android:strokeWidth="1"
+            android:strokeColor="#0080A8"/>
+        
+        <!-- Líneas de texto -->
+        <path
+            android:pathData="M25,24 L50,24"
+            android:strokeWidth="2"
+            android:strokeColor="#0080A8"
+            android:strokeLineCap="round"/>
+        
+        <path
+            android:pathData="M25,29 L45,29"
+            android:strokeWidth="2"
+            android:strokeColor="#0080A8"
+            android:strokeLineCap="round"/>
+        
+        <!-- Flecha de pago -->
+        <path
+            android:pathData="M70,15 L85,15 M80,10 L85,15 L80,20"
+            android:strokeWidth="3"
+            android:strokeColor="#00A896"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"/>
+    </group>
+    
+    <!-- Línea decorativa inferior -->
+    <path
+        android:pathData="M65,160 Q100,170 135,160"
+        android:strokeWidth="6"
+        android:strokeColor="#0080A8"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"/>
+</vector>

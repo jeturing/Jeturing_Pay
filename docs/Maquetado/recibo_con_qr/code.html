@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Recibo con QR</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4F46E5", // Using a vibrant blue/purple as primary
+            "background-light": "#FFFFFF",
+            "background-dark": "#000000",
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "1rem", // 16px
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex flex-col h-screen">
+<header class="relative flex items-center justify-center p-4 pt-16">
+<div class="absolute left-4 top-16">
+<button class="flex items-center justify-center h-10 w-10 bg-gray-200 dark:bg-gray-800 rounded-full">
+<span class="material-symbols-outlined text-gray-800 dark:text-gray-200">
+            close
+          </span>
+</button>
+</div>
+<h1 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Recibo con QR</h1>
+</header>
+<main class="flex-grow flex flex-col justify-between items-center px-6 pt-8 pb-6">
+<div class="w-full text-center">
+<p class="text-base text-gray-600 dark:text-gray-400">
+          El cliente puede escanear este código para ver su recibo
+        </p>
+</div>
+<div class="my-8">
+<div class="bg-white p-4 rounded-2xl shadow-md">
+<img alt="QR code for receipt" class="w-64 h-64" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3zD80b7EFn9YGPQW_xRLcTyLI-K9exJ0_vYbjE6TXsX5dz8UPEV8uNt8n9Nmw58rt5FB_FOgvMXS1fA7QxxVdLaHhEwEj1jljI7HaA02uFm3B4wVfCutOdD_GrXsRnGdZomKdO8fnDi-2OEeVUMbEmSkrhesHBLOavsbQiQOmAnUEIFPNxR8a53KYY2heuSBmLfjT7cbHa7qwaSo1BT3Ioe5jF8261Fmt2Fad-UctY3RORur-g19-TcN0Y1wrYrfb4Lg9oVVMxSs"/>
+</div>
+</div>
+<div class="w-full p-6 bg-gray-100 dark:bg-gray-900 rounded-lg">
+<div class="flex justify-between items-center mb-4">
+<span class="text-sm text-gray-600 dark:text-gray-400">Monto</span>
+<span class="font-semibold text-gray-900 dark:text-gray-100">$123.45</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-sm text-gray-600 dark:text-gray-400">Fecha</span>
+<span class="font-semibold text-gray-900 dark:text-gray-100">14/08/2024, 10:30 AM</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-sm text-gray-600 dark:text-gray-400">Sucursal</span>
+<span class="font-semibold text-gray-900 dark:text-gray-100">Principal</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-gray-600 dark:text-gray-400">ID de operación</span>
+<span class="font-semibold text-gray-900 dark:text-gray-100">ch_3Pds...HGsV</span>
+</div>
+</div>
+</main>
+<footer class="flex items-center justify-center p-6">
+<div class="flex items-center space-x-2">
+<svg class="h-5 w-5 text-gray-400 dark:text-gray-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.64 6.88c.39.39.39 1.02 0 1.41l-4.24 4.24c-.39.39-1.02.39-1.41 0l-1.41-1.41c-.39-.39-.39-1.02 0-1.41s1.02-.39 1.41 0l.71.71 3.54-3.54c.38-.39 1.02-.39 1.41 0z"></path>
+</svg>
+<span class="text-sm font-medium text-gray-500 dark:text-gray-500">Jeturing</span>
+</div>
+</footer>
+</div>
+
+</body></html>

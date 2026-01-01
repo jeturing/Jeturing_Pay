@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Propinas</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#007AFF",
+                        "background-light": "#F3F4F6",
+                        "background-dark": "#121212",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        .material-icons-outlined {
+            font-size: inherit;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="h-screen flex flex-col justify-between p-6">
+<header class="text-center">
+<h1 class="text-2xl font-bold text-gray-900 dark:text-white">Agregar Propina</h1>
+<p class="text-gray-600 dark:text-gray-400 mt-2">Selecciona una opción de propina</p>
+</header>
+<main class="flex-grow flex flex-col justify-center gap-8 py-8">
+<div class="bg-white dark:bg-gray-800 rounded-lg p-6 text-center shadow-sm">
+<p class="text-gray-500 dark:text-gray-400 text-sm">Monto total del cobro</p>
+<p class="text-4xl font-bold text-gray-900 dark:text-white mt-1">$123.45</p>
+</div>
+<div class="space-y-4">
+<div class="grid grid-cols-3 gap-4">
+<button class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-4 rounded-lg font-semibold text-lg hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background-light dark:focus:ring-offset-background-dark focus:ring-primary">10%</button>
+<button class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-4 rounded-lg font-semibold text-lg hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background-light dark:focus:ring-offset-background-dark focus:ring-primary">15%</button>
+<button class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-4 rounded-lg font-semibold text-lg hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background-light dark:focus:ring-offset-background-dark focus:ring-primary">20%</button>
+</div>
+<button class="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-4 rounded-lg font-semibold text-lg hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background-light dark:focus:ring-offset-background-dark focus:ring-primary">Otro monto</button>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg p-6 text-center shadow-sm border border-primary/50">
+<p class="text-gray-500 dark:text-gray-400 text-sm">Monto con propina</p>
+<p class="text-4xl font-bold text-primary mt-1">$142.00</p>
+</div>
+</main>
+<footer class="space-y-4">
+<button class="w-full bg-primary text-white py-4 rounded-lg font-bold text-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background-light dark:focus:ring-offset-background-dark focus:ring-primary">Confirmar y Cobrar</button>
+<button class="w-full text-primary py-4 rounded-lg font-semibold text-lg hover:bg-primary/10">Sin propina</button>
+<div class="flex justify-center items-center pt-2">
+<p class="text-xs text-gray-400 dark:text-gray-500 mr-1">Powered by</p>
+<p class="font-bold text-xs text-gray-500 dark:text-gray-400">Jeturing</p>
+</div>
+</footer>
+</div>
+
+</body></html>

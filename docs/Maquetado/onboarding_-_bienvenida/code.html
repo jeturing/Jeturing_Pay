@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding - Bienvenida</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 1,
+          'wght' 600,
+          'GRAD' 0,
+          'opsz' 48
+        }
+    </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#5A67D8",
+              "background-light": "#F7F8FC",
+              "background-dark": "#121212",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased">
+<div class="relative flex min-h-screen flex-col items-center justify-between overflow-hidden p-8">
+<div class="absolute -top-1/4 -right-1/4 h-1/2 w-1/2 rounded-full bg-primary/10 dark:bg-primary/20 blur-3xl"></div>
+<div class="absolute -bottom-1/4 -left-1/4 h-1/2 w-1/2 rounded-full bg-primary/10 dark:bg-primary/20 blur-3xl"></div>
+<div class="absolute top-[10%] left-[5%] h-24 w-24 -rotate-45 rounded-2xl bg-primary/5 dark:bg-primary/10 blur-sm"></div>
+<div class="absolute bottom-[20%] right-[10%] h-32 w-32 -rotate-45 rounded-2xl bg-primary/5 dark:bg-primary/10 blur-sm"></div>
+<div class="absolute bottom-[18%] right-[15%] h-32 w-32 -rotate-45 rounded-2xl bg-primary/5 dark:bg-primary/10 blur-sm"></div>
+<div class="absolute top-8 right-8 w-full text-right">
+<a class="text-sm font-medium text-primary dark:text-gray-300" href="#">Skip &gt;</a>
+</div>
+<div class="flex flex-1 flex-col items-center justify-center text-center">
+<div class="mb-4 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined !text-5xl mr-2">contactless</span>
+<span class="text-4xl font-bold tracking-tight text-slate-800 dark:text-white">Jeturing</span>
+</div>
+<h1 class="text-3xl font-bold text-slate-900 dark:text-gray-50 mb-3">Card entry</h1>
+<p class="max-w-xs text-base text-gray-600 dark:text-gray-400">
+                Get paid on the go! Simply type in card details no matter where you are. No monthly or terminal fees here. Sign up in five minutes and receive payouts within 2 days.
+            </p>
+</div>
+<div class="relative w-full">
+<div class="flex items-center justify-between">
+<div class="flex space-x-2">
+<div class="h-2 w-4 rounded-full bg-slate-900 dark:bg-white"></div>
+<div class="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-600"></div>
+<div class="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-600"></div>
+<div class="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-600"></div>
+</div>
+<button class="flex h-14 w-14 items-center justify-center rounded-full bg-slate-900 dark:bg-white">
+<span class="material-symbols-outlined text-white dark:text-slate-900 !text-3xl">arrow_forward</span>
+</button>
+</div>
+<div class="mt-8 flex justify-center">
+<div class="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-1.5">
+<span class="text-xs font-medium text-gray-500 dark:text-gray-400">Integrado con <span class="font-semibold text-gray-700 dark:text-gray-200">Jeturing CORE</span></span>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>
