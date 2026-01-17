@@ -13,6 +13,12 @@ import OnboardingScreen from '../screens/OnboardingScreen';
 import ConnectAccountScreen from '../screens/ConnectAccountScreen';
 import LoginScreen from '../screens/LoginScreen';
 
+// Maquetado Integration - Onboarding Flow
+import OnboardingWelcomeScreen from '../screens/OnboardingWelcomeScreen';
+import OnboardingCardEntryScreen from '../screens/OnboardingCardEntryScreen';
+import OnboardingCurrencyScreen from '../screens/OnboardingCurrencyScreen';
+import OnboardingTapToPayScreen from '../screens/OnboardingTapToPayScreen';
+
 // App Stack Screens
 import DashboardScreen from '../screens/DashboardScreen';
 import PaymentScreen from '../screens/PaymentScreen';
@@ -23,11 +29,12 @@ import TransactionHistoryScreen from '../screens/TransactionHistoryScreen';
 import TransactionDetailScreen from '../screens/TransactionDetailScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
-// Fase 1 - Critical Payment Flow Screens
+// Maquetado Integration - Phase 1: Payment Flow Screens
 import NumpadScreen from '../screens/NumpadScreen';
 import NewPaymentScreen from '../screens/NewPaymentScreen';
-import PaymentModeScreen from '../screens/PaymentModeScreen';
+import PaymentModeSelectionScreen from '../screens/PaymentModeSelectionScreen';
 import CancelPaymentScreen from '../screens/CancelPaymentScreen';
+import BranchSelectionScreen from '../screens/BranchSelectionScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -90,6 +97,10 @@ const AppNavigator = () => {
         // Auth Stack
         <>
           <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+          <Stack.Screen name="OnboardingWelcome" component={OnboardingWelcomeScreen} />
+          <Stack.Screen name="OnboardingCardEntry" component={OnboardingCardEntryScreen} />
+          <Stack.Screen name="OnboardingCurrency" component={OnboardingCurrencyScreen} />
+          <Stack.Screen name="OnboardingTapToPay" component={OnboardingTapToPayScreen} />
           <Stack.Screen name="ConnectAccount" component={ConnectAccountScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
         </>
@@ -97,13 +108,20 @@ const AppNavigator = () => {
         // App Stack
         <>
           <Stack.Screen name="AppTabs" component={AppTabs} />
+          
+          {/* Payment Flow - Maquetado Integration */}
           <Stack.Screen name="NewPayment" component={NewPaymentScreen} />
           <Stack.Screen name="Numpad" component={NumpadScreen} />
-          <Stack.Screen name="PaymentMode" component={PaymentModeScreen} />
+          <Stack.Screen name="PaymentModeSelection" component={PaymentModeSelectionScreen} />
           <Stack.Screen name="CancelPayment" component={CancelPaymentScreen} />
+          <Stack.Screen name="BranchSelection" component={BranchSelectionScreen} />
+          
+          {/* Payment Processing */}
           <Stack.Screen name="PaymentLink" component={PaymentLinkScreen} />
           <Stack.Screen name="PaymentSuccess" component={PaymentSuccessScreen} />
           <Stack.Screen name="CustomerRegistration" component={CustomerRegistrationScreen} />
+          
+          {/* Transaction Management */}
           <Stack.Screen name="TransactionDetail" component={TransactionDetailScreen} />
         </>
       )}
