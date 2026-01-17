@@ -36,6 +36,13 @@ import PaymentModeSelectionScreen from '../screens/PaymentModeSelectionScreen';
 import CancelPaymentScreen from '../screens/CancelPaymentScreen';
 import BranchSelectionScreen from '../screens/BranchSelectionScreen';
 
+// Maquetado Integration - Phase 2: TPV Variants and Receipt Screens
+import TPVMode1Screen from '../screens/TPVMode1Screen';
+import TPVMode2Screen from '../screens/TPVMode2Screen';
+import TPVMode3Screen from '../screens/TPVMode3Screen';
+import PaymentProcessingScreen from '../screens/PaymentProcessingScreen';
+import SendReceiptScreen from '../screens/SendReceiptScreen';
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -116,7 +123,14 @@ const AppNavigator = () => {
           <Stack.Screen name="CancelPayment" component={CancelPaymentScreen} />
           <Stack.Screen name="BranchSelection" component={BranchSelectionScreen} />
           
+          {/* TPV Variants - Maquetado Phase 2 */}
+          <Stack.Screen name="TPVMode1" component={TPVMode1Screen} />
+          <Stack.Screen name="TPVMode2" component={TPVMode2Screen} />
+          <Stack.Screen name="TPVMode3" component={TPVMode3Screen} />
+          
           {/* Payment Processing */}
+          <Stack.Screen name="PaymentProcessing" component={PaymentProcessingScreen} />
+          <Stack.Screen name="SendReceipt" component={SendReceiptScreen} />
           <Stack.Screen name="PaymentLink" component={PaymentLinkScreen} />
           <Stack.Screen name="PaymentSuccess" component={PaymentSuccessScreen} />
           <Stack.Screen name="CustomerRegistration" component={CustomerRegistrationScreen} />
